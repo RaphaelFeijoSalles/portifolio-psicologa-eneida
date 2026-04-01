@@ -85,8 +85,8 @@
                             <div class="prof-details">
                                 <h4>Gislene Gaion</h4>
                                 <p>
-                                    Fisioterapeuta e terapeuta ayurvédica. 
-                                    Idealizadora do Jardim Acalanto, unindo terapias, 
+                                    Fisioterapeuta e terapeuta ayurvédica.
+                                    Idealizadora do Jardim Acalanto, unindo terapias,
                                     arte-educação e a natureza como caminhos de cura.
                                 </p>
                             </div>
@@ -111,12 +111,25 @@
                         <h2 class="section-title-alt">Informações</h2>
                         <ul>
                             <li class="destaque-endereco">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16"
-                                    fill="currentColor" style="margin-right: 5px; vertical-align: text-bottom;">
-                                    <path
-                                        d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 0 1 0-128z" />
-                                </svg>
-                                Local: R. Olinda, 103 - Ipiranga, Londrina - PR
+                                <div class="destaque-endereco-texto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16"
+                                        fill="currentColor" style="margin-right: 5px; vertical-align: text-bottom;">
+                                        <path
+                                            d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 0 1 0-128z" />
+                                    </svg>
+                                    <span id="endereco-texto">Local: R. Olinda, 103 - Ipiranga, Londrina - PR</span>
+                                </div>
+
+                                <button onclick="copiarEndereco()" class="btn-copy-icon-only" id="btn-copy-endereco"
+                                    aria-label="Copiar endereço" title="Copiar endereço">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                                        <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                                    </svg>
+                                </button>
+
                             </li>
                         </ul>
                     </div>
@@ -141,7 +154,8 @@
                     <div class="passo">
                         <span>3</span>
                         <h3>Confirme sua Vaga</h3>
-                        <p>Envie o comprovante do PIX para o nosso WhatsApp para finalizar sua inscrição.</p>
+                        <p>Envie o comprovante do PIX para o nosso WhatsApp ou utilize o mesmo email do formulário ao
+                            pagar com cartão.</p>
                     </div>
                 </div>
             </div>
@@ -150,43 +164,121 @@
         <section class="section-common">
             <div class="container">
                 <h2 class="section-title">Formulário de Inscrição</h2>
-                <div class="form-container">
-                    <iframe
+
+                <div class="form-wrapper" id="form-wrapper">
+
+                    <iframe id="google-form-iframe"
                         src="https://docs.google.com/forms/d/e/1FAIpQLSfRZxXrnuH7gYoRVWu-JTnbd_2RVADon8A1Tytp6an5ZSfBJg/viewform?usp=header"
-                        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
+                        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
+                        onload="handleFormLoad()">
                         Carregando…
                     </iframe>
+
+                    <div class="success-feedback" id="success-feedback">
+                        <div class="success-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Inscrição quase concluída!</h3>
+                        <p>Recebemos seus dados. Para confirmar e garantir a sua vaga na Imersão, escolha sua forma de
+                            investimento na seção abaixo.</p>
+
+                        <button onclick="scrollToPayment()" class="btn-primary" style="margin-top: 15px;">Ir para
+                            Pagamento</button>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+
         <section class="section-common section-bg-alt">
             <div class="container">
                 <h2 class="section-title">Investimento</h2>
-                <div class="pix-container">
-                    <div class="pix-qr">
-                        <img src="../images/QR_code_pix.jpg" alt="QR Code para pagamento PIX">
-                    </div>
-                    <div class="pix-info">
-                        <h3>Valor: R$ 240,00</h3>
-                        <p>Utilize o QR Code ao lado ou a chave PIX abaixo para realizar o investimento.</p>
-                        <div class="chave-pix">
-                            <strong>Chave PIX (Celular):</strong>
-                            <span>43 9 99242805</span>
+                <p class="section-subtitle" style="margin-bottom: 2rem; font-size: 1.5rem;">Valor: <strong>R$
+                        240,00</strong></p>
+
+                <div class="investment-options">
+                    <!-- Coluna Cartão -->
+                    <div class="investment-card">
+                        <h3>Cartão de Crédito</h3>
+                        <p>Pagamento seguro em até 3x, processado pela Stripe.</p>
+
+                        <div class="stripe-accepted-brands">
+                            <span class="brands-label">Pagamento aceito via:</span>
+                            <div class="brands-logos">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                                    alt="Visa" title="Visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                                    alt="Mastercard" title="Mastercard">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
+                                    alt="Apple Pay" title="Apple Pay">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
+                                    alt="Google Pay" title="Google Pay">
+                            </div>
                         </div>
-                        <p class="aviso">
-                            <strong>Importante:</strong> Após realizar o investimento, envie o comprovante para o número
-                            abaixo para confirmar sua vaga.
-                        </p>
-                        <a href="https://api.whatsapp.com/send?phone=5543999242805&text=Ol%C3%A1%21%20Estou%20enviando%20o%20comprovante%20de%20investimento%20para%20a%202%C2%AA%20Tarde%20de%20Imers%C3%A3o%20(Somos%20%C3%81gua)."
-                            class="btn-primary btn-whatsapp-event" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
-                                <path fill="currentColor"
-                                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 439.6c-33.8 0-66.2-9.2-93.5-25.7l-6.7-4-69.8 18.3L72 372.2l-4.5-7c-18.9-29.6-29.9-63.5-29.9-98.8 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zM319.2 301.1c-3.1-1.6-18.6-9.2-21.4-10.2-2.9-1-5-1.6-7.1 1.6-2.1 3.2-8.1 10.2-9.9 12.3-1.8 2.1-3.6 2.3-6.6 .8-3.1-1.6-13-4.8-24.8-15.3-9.2-8.1-15.3-18.1-17.1-21.2-1.8-3.2-.2-4.9 1.4-6.4 1.4-1.4 3.1-3.6 4.7-5.4 1.6-1.8 2.1-3.2 3.2-5.4 1-2.1.5-3.9-.2-5.4-1-1.6-7.1-17.1-9.7-23.4-2.6-6.4-5.2-5.5-7.1-5.6-1.8-.1-3.9-.1-6-.1-2.1 0-5.5.8-8.4 4.1-2.9 3.2-11.1 10.8-11.1 26.4 0 15.6 11.4 30.6 13 32.7 1.6 2.1 22 33.7 53.4 47.1 7.5 3.2 13.5 5.1 18.1 6.6 8.5 2.8 16.2 2.3 22.3 1.4 6.9-1 21.2-8.7 24.2-17.1 3-8.4 3-15.6 2.1-17.1-1-1.6-3.1-2.3-6.1-4z" />
+
+                        <div class="payment-email-warning">
+                            <strong>Atenção:</strong> Na próxima tela, utilize o <strong>mesmo e-mail</strong> que você
+                            preencheu no formulário acima para validarmos sua vaga automaticamente.
+                        </div>
+
+                        <a href="https://buy.stripe.com/test_fZu00ih0nfpZ1V36LEdIA00" class="btn-primary btn-stripe"
+                            style="display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
                             </svg>
-                            Enviar Comprovante (43 9 99242805)
+                            Pagar com Cartão
                         </a>
                     </div>
+
+                    <!-- Coluna PIX -->
+                    <div class="investment-card">
+                        <h3>Pagamento via PIX</h3>
+                        <p>Aponte a câmera do seu celular para o QR Code ou use a chave para realizar o pagamento.</p>
+                        <div class="pix-details">
+                            <div class="pix-qr-small">
+                                <img src="../images/QR_code_pix.jpg" alt="QR Code para pagamento PIX">
+                            </div>
+                            <div class="pix-key">
+                                <strong>Chave PIX (Celular):</strong>
+                                <span>43 9 99242805</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="investment-proof">
+                    <p class="aviso"><strong>Importante:</strong> Após realizar o pagamento via <strong>PIX</strong>,
+                        envie o comprovante para o número abaixo para confirmar sua vaga.</p>
+                    <a href="https://api.whatsapp.com/send?phone=5543999242805&text=Ol%C3%A1%21%20Estou%20enviando%20o%20comprovante%20de%20investimento%20para%20a%203%C2%AA%20Tarde%20de%20Imers%C3%A3o."
+                        class="btn-primary btn-whatsapp-event" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                            viewBox="0 0 48 48">
+                            <path fill="#fff"
+                                d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z">
+                            </path>
+                            <path fill="#fff"
+                                d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z">
+                            </path>
+                            <path fill="#cfd8dc"
+                                d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z">
+                            </path>
+                            <path fill="#40c351"
+                                d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z">
+                            </path>
+                            <path fill="#fff" fill-rule="evenodd"
+                                d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
+                                clip-rule="evenodd"></path>
+                        </svg> Enviar Comprovante
+                    </a>
+                    <p class="whatsapp-number-caption">(43) 9 9924-2805</p>
                 </div>
             </div>
         </section>

@@ -496,10 +496,56 @@ a:hover { color: var(--color-primary); }
     font-weight: 700;
     padding: 1rem;
     margin-bottom: 1rem;
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transform: scale(1.02);
+    /* transform: scale(1.02); */ /* Removido para evitar problemas de layout com o botão */
+}
+
+.destaque-endereco-texto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================
+   Botão de Copiar (Ícone Singelo -> Ícone Check)
+   ========================================= */
+.btn-copy-icon-only {
+    background-color: transparent;
+    border: 1px solid var(--color-primary); /* Contorno azul do site */
+    color: var(--color-primary); /* Cor azul do ícone base */
+    border-radius: 4px; 
+    padding: 6px; /* Mantém o formato quadradinho */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    min-height: 32px;
+    min-width: 32px;
+    line-height: 0;
+}
+
+/* Garante que NENHUM ícone aqui dentro tenha preenchimento (Crucial para o fix) */
+.btn-copy-icon-only svg {
+    fill: none !important;
+    stroke: currentColor;
+    stroke-width: 2; /* Mantemos a espessura padrão */
+}
+
+/* Efeito Hover */
+.btn-copy-icon-only:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.1); 
+    transform: scale(1.05); 
+}
+
+/* Estado de sucesso: contorno e ícone ficam verdes */
+.btn-copy-icon-only.copied {
+    border-color: #28a745; 
+    color: #28a745;
 }
 .event-info li.destaque-endereco svg {
     fill: var(--color-primary);
@@ -553,6 +599,12 @@ a:hover { color: var(--color-primary); }
     display: flex; 
     flex-direction: column;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.passo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
 }
 .passo span {
     display: inline-flex; 
@@ -794,6 +846,228 @@ a:hover { color: var(--color-primary); }
     gap: 5px; /* Ajuste fino do espaço */
 }
 
+.payment-reminder-alert{
+    text-align: center;
+}
+
+/* --- Seção de Investimento Refatorada --- */
+.investment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 3rem auto 0 auto;
+}
+
+/* =========================================
+   Bandeiras Stripe
+   ========================================= */
+.stripe-accepted-brands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 20px 0;
+}
+
+.brands-label {
+    font-size: 0.85rem;
+    color: #666;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.brands-logos {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.brands-logos img {
+    height: 22px; /* Altura padronizada para as logos */
+    width: auto;
+    object-fit: contain;
+    opacity: 0.85; /* Deixa as logos levemente mais suaves no layout */
+    transition: opacity 0.2s ease;
+}
+
+.brands-logos img:hover {
+    opacity: 1; /* Destaca ao passar o mouse */
+}
+
+/* =========================================
+   Aviso de E-mail (Cartão de Crédito)
+   ========================================= */
+.payment-email-warning {
+    background-color: #fdfaf3;
+    border-left: 4px solid #d4af37;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    text-align: left;
+    color: #555;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.payment-email-warning strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.investment-card {
+    background-color: var(--color-base);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.investment-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.investment-card p {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.investment-card .btn-primary {
+    margin-top: auto; /* Alinha o botão na parte inferior */
+}
+
+.pix-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.pix-qr-small img {
+    max-width: 180px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.pix-key {
+    background: var(--color-background-alt);
+    border: 1px dashed var(--color-secondary);
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.pix-key strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.pix-key span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    letter-spacing: 1px;
+}
+
+.investment-proof {
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.investment-proof .aviso {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.whatsapp-number-caption {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+}
+
+/* =========================================
+   Estado de Sucesso do Formulário
+   ========================================= */
+.form-wrapper {
+    position: relative;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+.success-feedback {
+    display: none; /* Escondido por padrão */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fdfaf3; /* Fundo creme que combina com o site */
+    border: 2px dashed #d4af37; /* Borda dourada tracejada */
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50; /* Verde sucesso */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.success-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.success-feedback h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.success-feedback p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Animação suave para o card de sucesso aparecer */
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
 /* ======== 9. RESPONSIVIDADE (MEDIA QUERIES) ======== */
 @media (max-width: 992px) {
     /* Menu Mobile */
@@ -876,7 +1150,7 @@ a:hover { color: var(--color-primary); }
     .prof-img { margin: 0 auto 0.75rem auto; border: 3px solid var(--color-primary); width: 100px; height: 100px; }
     .prof-details h4 { margin-top: 0.5rem; }
     .prof-card:not(:last-child) { margin-bottom: 2rem; }
-    
+
     .passos-container, .pix-container { grid-template-columns: 1fr; }
     .pix-container { text-align: center; padding: 2rem; }
     .pix-qr img { max-width: 200px; margin: 0 auto; }
@@ -894,5 +1168,19 @@ a:hover { color: var(--color-primary); }
     .testimonial-scroller-inner::-webkit-scrollbar { display: none; }
     .testimonial-card-scrolling {
         min-width: 85vw; width: 85vw; scroll-snap-align: center; margin-right: 15px; 
+    }
+
+    /* Investimento Mobile */
+    .investment-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-info li.destaque-endereco {
+        flex-direction: row; /* Mantém ícone e botão na mesma linha se houver espaço */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 }

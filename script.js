@@ -115,5 +115,70 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-
 });
+
+/* =========================================
+   Lógica do Google Forms no Iframe
+   ========================================= */
+let iframeLoadCount = 0;
+
+function handleFormLoad() {
+    iframeLoadCount++;
+    
+    // O primeiro load é quando a página carrega. O segundo é quando o form é enviado.
+    if (iframeLoadCount > 1) {
+        const iframe = document.getElementById('google-form-iframe');
+        const successFeedback = document.getElementById('success-feedback');
+        
+        // Esconde o iframe
+        iframe.style.display = 'none';
+        
+        // Mostra a mensagem de sucesso e o certinho
+        successFeedback.style.display = 'flex';
+        
+        // Opcional: Rola a página suavemente até a mensagem para o usuário não ficar perdido no espaço em branco
+        successFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+// Função para rolar direto para a área de pagamento quando clicar no botão novo
+function scrollToPayment() {
+    const paymentSection = document.querySelector('.investment-options');
+    if(paymentSection) {
+        paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+/* =========================================
+   Função para copiar o endereço
+   ========================================= */
+function copiarEndereco() {
+    const enderecoTexto = document.getElementById('endereco-texto').innerText;
+    const btnCopy = document.getElementById('btn-copy-endereco');
+
+    // Novo SVG do Check (Mais reto, sólido e definitivo)
+    const svgCheck = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+        </svg>
+    `;
+
+    navigator.clipboard.writeText(enderecoTexto).then(() => {
+        // Salva o ícone original (quadrados vazados)
+        const conteudoOriginal = btnCopy.innerHTML;
+        
+        // Adiciona a classe para ficar verde
+        btnCopy.classList.add('copied');
+        
+        // Substitui pelo ícone de check mais robusto
+        btnCopy.innerHTML = svgCheck;
+        
+        // Restaura o ícone original após 2 segundos
+        setTimeout(() => {
+            btnCopy.classList.remove('copied');
+            btnCopy.innerHTML = conteudoOriginal;
+        }, 2000);
+    }).catch(err => {
+        console.error('Erro ao copiar o endereço: ', err);
+    });
+}
