@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2ª Tarde de Imersão: Somos Água - Eneida Feijó</title>
-    <link rel="icon" type="image/png" href="../images/logo.png">
-    <link rel="stylesheet" href="../style.css">
+    <title>3ª Tarde de Imersão: A cura que vem da terra - Eneida Feijó</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,25 +15,8 @@
 </head>
 
 <body>
-
-    <header class="main-header" id="main-header">
-        <nav class="navbar">
-            <a href="/index.html#home" class="nav-logo">Eneida Feijó</a>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="../index.html#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="../index.html#eventos-concluidos" class="nav-link">Eventos</a></li>
-                <li class="nav-item"><a href="../index.html#proximos-eventos" class="nav-link">Próxima Imersão</a></li>
-                <li class="nav-item"><a href="../index.html#depoimentos" class="nav-link">Depoimentos</a></li>
-                <li class="nav-item"><a href="../index.html#publicacoes" class="nav-link">Publicações</a></li>
-                <li class="nav-item"><a href="../index.html#contato" class="nav-link cta-button">Agendar Sessão</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="app-banner"></div>
+    <header class="main-header" id="app-header"></header>
 
     <main>
         <section class="event-hero">
@@ -47,7 +30,6 @@
         <section class="event-details-section">
             <div class="container">
                 <div class="event-layout-grid">
-
                     <div class="event-cronograma">
                         <h2 class="section-title-alt">Programação</h2>
                         <ul>
@@ -64,47 +46,32 @@
 
                     <div class="event-profissionais">
                         <h2 class="section-title-alt">Condutoras</h2>
-
                         <div class="prof-card">
-                            <div class="prof-img">
-                                <img src="../images/condutora-eneida.jpg" alt="Eneida Feijó">
-                            </div>
+                            <div class="prof-img"><img src="/assets/images/profissionais/condutora-eneida.jpg"
+                                    alt="Eneida Feijó"></div>
                             <div class="prof-details">
                                 <h4>Eneida Feijó</h4>
-                                <p>
-                                    Psicóloga humanista, com especialização em Gestão de pessoas e especialização em
-                                    curso de Espiritualidade, Carreira e Sentido da Vida.
-                                </p>
+                                <p>Psicóloga humanista, com especialização em Gestão de pessoas e especialização em
+                                    curso de Espiritualidade, Carreira e Sentido da Vida.</p>
                             </div>
                         </div>
-
                         <div class="prof-card">
-                            <div class="prof-img">
-                                <img src="../images/condutora-julia.jpg" alt="Gislene Gaion">
-                            </div>
+                            <div class="prof-img"><img src="/assets/images/profissionais/condutora-julia.jpg"
+                                    alt="Gislene Gaion"></div>
                             <div class="prof-details">
                                 <h4>Gislene Gaion</h4>
-                                <p>
-                                    Fisioterapeuta e terapeuta ayurvédica.
-                                    Idealizadora do Jardim Acalanto, unindo terapias,
-                                    arte-educação e a natureza como caminhos de cura.
-                                </p>
+                                <p>Fisioterapeuta e terapeuta ayurvédica. Idealizadora do Jardim Acalanto, unindo
+                                    terapias, arte-educação e a natureza como caminhos de cura.</p>
                             </div>
                         </div>
-
                         <div class="prof-card">
-                            <div class="prof-img">
-                                <img src="../images/condutora-carla.jpg" alt="Carla Santos">
-                            </div>
+                            <div class="prof-img"><img src="/images/condutora-carla.jpg" alt="Carla Santos"></div>
                             <div class="prof-details">
                                 <h4>Carla Santos</h4>
-                                <p>Carla Santos
-                                    Terapeuta holística e pós-graduada em medicina tradicional chinesa.
-                                    Professora de natação e hidroginástica.
-                                </p>
+                                <p>Terapeuta holística e pós-graduada em medicina tradicional chinesa. Professora de
+                                    natação e hidroginástica.</p>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="event-info">
@@ -119,9 +86,7 @@
                                     </svg>
                                     <span id="endereco-texto">Local: R. Olinda, 103 - Ipiranga, Londrina - PR</span>
                                 </div>
-
-                                <button onclick="copiarEndereco()" class="btn-copy-icon-only" id="btn-copy-endereco"
-                                    aria-label="Copiar endereço" title="Copiar endereço">
+                                <button class="btn-copy-icon-only" id="btn-copy-endereco" aria-label="Copiar endereço">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -129,7 +94,6 @@
                                         <rect x="2" y="2" width="13" height="13" rx="2"></rect>
                                     </svg>
                                 </button>
-
                             </li>
                         </ul>
                     </div>
@@ -149,7 +113,7 @@
                     <div class="passo">
                         <span>2</span>
                         <h3>Faça o Investimento</h3>
-                        <p>Realize o investimento de R$ 240,00 via PIX utilizando o QR Code ou a chave abaixo.</p>
+                        <p>Realize o investimento de R$ 240,00 via PIX ou Cartão de Crédito abaixo.</p>
                     </div>
                     <div class="passo">
                         <span>3</span>
@@ -164,16 +128,11 @@
         <section class="section-common">
             <div class="container">
                 <h2 class="section-title">Formulário de Inscrição</h2>
-
                 <div class="form-wrapper" id="form-wrapper">
-
                     <iframe id="google-form-iframe"
                         src="https://docs.google.com/forms/d/e/1FAIpQLSfRZxXrnuH7gYoRVWu-JTnbd_2RVADon8A1Tytp6an5ZSfBJg/viewform?usp=header"
                         width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
-                        onload="handleFormLoad()">
-                        Carregando…
-                    </iframe>
-
+                        >Carregando…</iframe>
                     <div class="success-feedback" id="success-feedback">
                         <div class="success-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -185,28 +144,22 @@
                         <h3>Inscrição quase concluída!</h3>
                         <p>Recebemos seus dados. Para confirmar e garantir a sua vaga na Imersão, escolha sua forma de
                             investimento na seção abaixo.</p>
-
-                        <button onclick="scrollToPayment()" class="btn-primary" style="margin-top: 15px;">Ir para
+                        <button data-action="scroll-to-payment" class="btn-primary" style="margin-top: 15px;">Ir para
                             Pagamento</button>
                     </div>
-
                 </div>
             </div>
         </section>
-
 
         <section class="section-common section-bg-alt">
             <div class="container">
                 <h2 class="section-title">Investimento</h2>
                 <p class="section-subtitle" style="margin-bottom: 2rem; font-size: 1.5rem;">Valor: <strong>R$
                         240,00</strong></p>
-
                 <div class="investment-options">
-                    <!-- Coluna Cartão -->
                     <div class="investment-card">
                         <h3>Cartão de Crédito</h3>
                         <p>Pagamento seguro em até 3x, processado pela Stripe.</p>
-
                         <div class="stripe-accepted-brands">
                             <span class="brands-label">Pagamento aceito via:</span>
                             <div class="brands-logos">
@@ -220,12 +173,10 @@
                                     alt="Google Pay" title="Google Pay">
                             </div>
                         </div>
-
                         <div class="payment-email-warning">
                             <strong>Atenção:</strong> Na próxima tela, utilize o <strong>mesmo e-mail</strong> que você
-                            preencheu no formulário acima para validarmos sua vaga automaticamente.
+                            preencheu no formulário acima.
                         </div>
-
                         <a href="https://buy.stripe.com/test_fZu00ih0nfpZ1V36LEdIA00" class="btn-primary btn-stripe"
                             style="display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
@@ -238,17 +189,16 @@
                         </a>
                     </div>
 
-                    <!-- Coluna PIX -->
                     <div class="investment-card">
                         <h3>Pagamento via PIX</h3>
                         <p>Aponte a câmera do seu celular para o QR Code ou use a chave para realizar o pagamento.</p>
                         <div class="pix-details">
-                            <div class="pix-qr-small">
-                                <img src="../images/QR_code_pix.jpg" alt="QR Code para pagamento PIX">
+                            <div class="pix-qr-small"><img src="/assets/images/eventos/QR_code_pix.jpg" alt="QR Code">
                             </div>
                             <div class="pix-key">
                                 <strong>Chave PIX (Celular):</strong>
                                 <span>43 9 99242805</span>
+                                <strong>ENEIDA LOPES FEIJO</strong>
                             </div>
                         </div>
                     </div>
@@ -256,27 +206,10 @@
 
                 <div class="investment-proof">
                     <p class="aviso"><strong>Importante:</strong> Após realizar o pagamento via <strong>PIX</strong>,
-                        envie o comprovante para o número abaixo para confirmar sua vaga.</p>
+                        envie o comprovante.</p>
                     <a href="https://api.whatsapp.com/send?phone=5543999242805&text=Ol%C3%A1%21%20Estou%20enviando%20o%20comprovante%20de%20investimento%20para%20a%203%C2%AA%20Tarde%20de%20Imers%C3%A3o."
                         class="btn-primary btn-whatsapp-event" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
-                            viewBox="0 0 48 48">
-                            <path fill="#fff"
-                                d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z">
-                            </path>
-                            <path fill="#fff"
-                                d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z">
-                            </path>
-                            <path fill="#cfd8dc"
-                                d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z">
-                            </path>
-                            <path fill="#40c351"
-                                d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z">
-                            </path>
-                            <path fill="#fff" fill-rule="evenodd"
-                                d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
-                                clip-rule="evenodd"></path>
-                        </svg> Enviar Comprovante
+                        <img class='whatsapp-icon' src="/assets/images/ui/whatsapp-botao.png"> Enviar Comprovante
                     </a>
                     <p class="whatsapp-number-caption">(43) 9 9924-2805</p>
                 </div>
@@ -284,45 +217,8 @@
         </section>
     </main>
 
-    <footer id="contato" class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>Eneida Feijó</h3>
-                    <p>Psicóloga Humanista com foco na Logoterapia e no Sentido da Vida. CRP 08/40518.</p>
-                </div>
-                <div class="footer-contact">
-                    <h3>Contatos</h3>
-                    <p>
-                        <img src="../images/whatsapp-gold.png" alt="WhatsApp" class="icon-footer">
-                        <a href="https://wa.me/5543999242805?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20d%C3%BAvidas%20ou%20saber%20mais%20sobre%20o%20atendimento%20psicol%C3%B3gico."
-                            target="_blank">+55 43 99924-2805</a>
-                    </p>
-                    <p>
-                        <img src="../images/email-gold.png" alt="Email" class="icon-footer">
-                        <a href="mailto:contato@eneidafeijo.com">contato@eneidafeijo.com</a>
-                    </p>
-                    <p>
-                        <img src="../images/instagram-gold.png" alt="Instagram" class="icon-footer">
-                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank">@psi.eneidafeijo</a>
-                    </p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="footer-copyright">
-            <div class="copyright-content">
-                <p>&copy; 2025 Eneida Feijó. Todos os direitos reservados.</p>
-                <span class="divider">|</span>
-                <p class="dev-credit">
-                    Site por <a href="https://linktr.ee/raphaelfeijosalles" target="_blank"
-                        title="Orçamento para Criação de Sites">Raphael Salles</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-    <script src="../script.js"></script>
+    <footer class="main-footer" id="app-footer"></footer>
+    <script type="module" src="/assets/js/main.js"></script>
 </body>
 
 </html>

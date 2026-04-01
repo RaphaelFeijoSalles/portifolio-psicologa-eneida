@@ -1,0 +1,29 @@
+.section-home { padding: 4rem 0 2rem 0; background-color: var(--color-base); }
+.home-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "text image" "bio bio" "video video"; gap: 3rem; align-items: center;
+}
+.home-text { grid-area: text; }
+.home-image { grid-area: image; text-align: center; }
+.home-bio { grid-area: bio; padding-top: 3rem; border-top: 1px solid #eee; margin-top: 2rem; }
+.home-bio h2 { text-align: center; margin-bottom: 2rem; }
+.home-video-wrapper {
+    grid-area: video; width: 100%; max-width: 100%; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--box-shadow); aspect-ratio: 16 / 9;
+}
+.home-video-wrapper iframe { width: 100%; height: 100%; display: block; }
+.home-text .subtitle { font-size: 1.1rem; line-height: 1.8; }
+.home-image img {
+    max-width: 100%; width: 400px; height: 400px; object-fit: cover; border-radius: 50%; border: 8px solid var(--color-accent);
+}
+.social-icons { display: flex; gap: 1.5rem; margin-top: 2rem; }
+.social-icons a { color: var(--color-secondary); width: 30px; height: 30px; }
+.social-icons a:hover { color: var(--color-primary); }
+.social-icons svg { width: 100%; height: 100%; }
+.icon-intro { width: 30px; height: 30px; object-fit: contain; transition: transform 0.3s ease; }
+.social-icons a:hover .icon-intro { transform: scale(1.1); }
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2, .section-title { font-size: 2rem; }
+    .home-grid { grid-template-columns: 1fr; grid-template-areas: "image" "text" "bio" "video"; text-align: center; }
+    .home-text { margin-top: 2rem; }
+    .social-icons { justify-content: center; }
+}
