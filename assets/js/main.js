@@ -36,14 +36,18 @@ function shouldShowBanner() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+    
+    // Descobre se está rodando no GitHub Pages para ajustar o caminho
+    const isGitHub = window.location.hostname.includes('github.io');
+    const BASE_PATH = isGitHub ? '/portifolio-psicologa-eneida' : '';
 
     // 1. Injeta os componentes (Header e Footer sempre)
-    await loadComponent('app-header', '/components/header.html');
-    await loadComponent('app-footer', '/components/footer.html');
+    await loadComponent('app-header', `${BASE_PATH}/components/header.html`);
+    await loadComponent('app-footer', `${BASE_PATH}/components/footer.html`);
 
     // 2. Injeta e inicializa o Banner conforme configuração
     if (shouldShowBanner()) {
-        await loadComponent('app-banner', '/components/banner.html');
+        await loadComponent('app-banner', `${BASE_PATH}/components/banner.html`);
         const bannerController = new BannerController();
         bannerController.init();
     }

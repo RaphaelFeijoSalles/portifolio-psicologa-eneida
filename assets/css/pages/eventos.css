@@ -46,7 +46,7 @@
 .event-hero {
     padding: 4rem 0;
     background-color: var(--color-primary);
-    background-image: linear-gradient(rgba(11, 44, 74, 0.8), rgba(11, 44, 74, 0.8)), url('/images/Ambientacao.jpg');
+    background-image: linear-gradient(rgba(11, 44, 74, 0.8), rgba(11, 44, 74, 0.8)), url('../../../assets/images/Ambientacao.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
