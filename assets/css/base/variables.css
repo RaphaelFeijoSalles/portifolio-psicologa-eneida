@@ -1,0 +1,17 @@
+:root {
+    --color-primary: #0B2C4A;     
+    --color-secondary: #547A8B;   
+    --color-accent: #DDC9A3;      
+    --color-base: #FFFFFF;        
+    --color-text-dark: #222222;
+    --color-text-light: #555555;
+    --color-background-alt: #f8f9fa;
+    --color-footer-text: #E0E0E0;   
+    --color-footer-link: #FFFFFF;   
+    --color-footer-subtle: #C5C5C5; 
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --header-height: 70px;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}

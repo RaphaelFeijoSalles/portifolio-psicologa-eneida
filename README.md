@@ -1,56 +1,35 @@
-# Portfólio Profissional - Psicóloga Eneida Feijó
+# Eneida Feijó - Portfólio e Landing Pages
 
-Este projeto é o site institucional e portfólio da psicóloga humanista Eneida Feijó. O site foi desenvolvido para apresentar a trajetória profissional, facilitar o agendamento de sessões e gerenciar a divulgação de eventos e imersões (presenciais e online).
+Portfólio profissional e plataforma de inscrição para eventos da psicóloga humanista Eneida Feijó. Projeto focado em performance, design responsivo e arquitetura modular de alta manutenibilidade.
 
-## 🚀 Funcionalidades
+## 🏗️ Arquitetura e Padrões (Refatoração)
 
-* **Design Responsivo e Mobile-First:** Interface adaptável para dispositivos móveis, tablets e desktops, utilizando a paleta de cores da identidade visual da cliente (Safira Clássico).
-* **Navegação SPA (Single Page Application):** A página principal (`index.html`) funciona com rolagem suave e menu fixo com *Scroll-Spy* (destaque ativo).
-* **Landing Pages de Eventos:**
-    * Página dedicada para o próximo evento ("2ª Tarde de Imersão: Somos Água"), com cronograma, apresentação das condutoras e formulário de inscrição.
-    * Arquivo de eventos passados com galeria de mídia.
-* **Depoimentos Interativos:**
-    * **Desktop:** Rolagem automática infinita (Infinite Scroll).
-    * **Mobile:** Navegação por *Swipe* (arrastar com o dedo) para melhor usabilidade.
-* **Integrações:**
-    * Formulário de inscrição integrado (Google Forms via iFrame).
-    * Botões "Click-to-Chat" para WhatsApp (Agendamento e envio de comprovantes).
-    * Mapas e links de localização.
+O projeto utiliza uma arquitetura baseada em **Componentização e Modularidade Vanilla**:
 
-## 🛠️ Tecnologias Utilizadas
+- **HTML Injection:** O cabeçalho (`header.html`) e o rodapé (`footer.html`) são arquivos isolados, carregados de forma assíncrona (Fetch API) para facilitar a manutenção e evitar duplicação em múltiplas páginas.
+- **CSS Modular:** O CSS está fragmentado no diretório `/assets/css/` utilizando `@import` para orquestrar os estilos de layout, base e componentes.
+- **JavaScript ES6+ Modules:** A lógica foi dividida usando o padrão POO (Programação Orientada a Objetos). Classes com métodos declarativos (`bindEvents` e `unbindEvents`) garantem um controle rigoroso do ciclo de vida dos eventos no DOM.
 
-* **HTML5 Semântico:** Para estruturação do conteúdo e SEO.
-* **CSS3:**
-    * **Flexbox & Grid Layout:** Para posicionamento de elementos complexos (ex: grade de programação do evento).
-    * **CSS Variables:** Para fácil manutenção de cores e fontes.
-    * **Media Queries:** Ajustes finos para breakpoints de tablet e mobile.
-    * **Scroll Snap:** Para a experiência nativa de carrossel em dispositivos móveis.
-* **JavaScript (Vanilla):**
-    * Manipulação do DOM para o menu hambúrguer.
-    * Lógica de navegação e banners flutuantes.
-    * Duplicação de elementos para o efeito de "loop infinito" nos depoimentos.
+## 🚀 Como Executar Localmente
 
-## 📂 Estrutura do Projeto
+Devido ao uso de **ES6 Modules** (`<script type="module">`) e chamadas de **Fetch API** locais para o HTML, o projeto **precisa ser rodado em um servidor local** (não funcionará abrindo o `index.html` diretamente no navegador devido à política de CORS).
 
-```text
-/
-├── index.html             # Página principal (Portfólio, Bio e Agendamento)
-├── proximo-evento.html    # Landing Page do evento atual (Somos Água - 29/11)
-├── evento-01.html         # Arquivo do evento passado (1ª Imersão)
-├── style.css              # Folha de estilos global e responsividade
-├── script.js              # Lógica de interação, menu e scroll
-├── images/                # Pasta de ativos (fotos, ícones, backgrounds)
-└── README.md              # Documentação do projeto
-🌍 Hospedagem e Deploy
-O projeto foi otimizado para hospedagem estática (Hostinger, Vercel, Netlify ou GitHub Pages).
+**Recomendação (VS Code):**
+1. Instale a extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+2. Clique com o botão direito no `index.html` na raiz do projeto.
+3. Selecione `Open with Live Server`.
 
-Estrutura: Arquivos estáticos (HTML/CSS/JS).
+## 📁 Estrutura de Diretórios
+- `/assets/css/` - Estilos fragmentados (Variáveis, Layout, UI Components).
+- `/assets/js/` - Lógica modularizada.
+  - `/modules/` - Classes controladoras (Menu, Eventos).
+  - `/utils/` - Funções helpers puras.
+- `/components/` - Fragmentos de HTML (Header e Footer).
+- `/pages/` - Páginas secundárias (Eventos passados, Sucesso de pagamento).
 
-E-mail Profissional: Configurado via DNS (MX/SPF/DKIM) para uso com domínio personalizado (@eneidafeijo.com).
+## 🛠️ Tecnologias
+- **HTML5 & CSS3** (CSS Variables, Flexbox, Grid, CSS Modules pattern)
+- **JavaScript (Vanilla ES6)** (Async/Await, Classes, Modules)
+- Integração iFrame (Google Forms) e Stripe (Checkout)
 
-✒️ Autores e Créditos
-Desenvolvimento: Raphael Salles
-
-Contato: WhatsApp | Email
-
-© 2025 Eneida Feijó. Todos os direitos reservados.
+✒️ **Desenvolvido por:** Raphael Salles

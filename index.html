@@ -1,112 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eneida Feijó - Psicóloga Humanista</title>
-
-    <link rel="icon" type="image/png" href="images/logo.png">
-
-    <link rel="stylesheet" href="style.css">
-
+    
+    <link rel="icon" type="image/png" href="assets/images/ui/logo.png">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <!--Evento Banner - envolver essa div inteira em um comentário para desativar o banner-->
-    <div class="event-banner" id="event-banner">
-        <p>
-            <strong>Save the date 11/04</strong> - 3º tarde de imersão.
-            <a href="#proximos-eventos">Reserve esse tempo pra você!</a>
-        </p>
-        <button class="close-btn" id="close-banner" aria-label="Fechar aviso">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor">
-                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-            </svg>
-        </button>
-    </div>
-    
-
-    <header class="main-header" id="main-header">
-        <nav class="navbar">
-            <a href="#home" class="nav-logo">
-                <a href="#home" class="nav-logo">Eneida Feijó</a>
-            </a>
-
-            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#eventos-concluidos" class="nav-link">Eventos</a></li>
-                <li class="nav-item"><a href="#proximos-eventos" class="nav-link">Próxima Imersão</a></li>
-                <li class="nav-item"><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-                <li class="nav-item"><a href="#publicacoes" class="nav-link">Publicações</a></li>
-                <li class="nav-item"><a href="#contato" class="nav-link cta-button">Agendar Sessão</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="app-banner"></div>
+    <header class="main-header" id="app-header"></header>
 
     <main>
-
         <section id="home" class="section-home">
-            <div class="container home-grid">
-                <div class="home-text">
-                    <h1>Psicologia Humanista & Sentido da Vida</h1>
-                    <p class="subtitle">Meu nome é Eneida, sou psicóloga humanista há dois anos. Antes de ser psicóloga,
-                        fui professora de ensino fundamental, médio e graduação. As questões ligadas aos aspectos
-                        emocionais sempre me intrigaram e despertaram minha atenção.</p>
-
-                    <div class="social-icons">
-                        <a href="https://wa.me/5543999242805?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20d%C3%BAvidas%20ou%20saber%20mais%20sobre%20o%20atendimento%20psicol%C3%B3gico.
-                        " target="_blank" aria-label="WhatsApp">
-                            <img src="images/whatsapp-azul.png" alt="WhatsApp" class="icon-intro">
-                        </a>
-
-                        <a href="mailto:contato@eneidafeijo.com" aria-label="Email">
-                            <img src="images/email-azul.png" alt="Email" class="icon-intro">
-                        </a>
-
-                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" aria-label="Instagram">
-                            <img src="images/instagram-azul.png" alt="Instagram" class="icon-intro">
-                        </a>
+            <div class="container">
+                <div class="home-grid">
+                    
+                    <div class="home-text">
+                        <h1>Eneida Feijó</h1>
+                        <p class="subtitle">Psicóloga Humanista com foco na Logoterapia e no Sentido da Vida.<br>CRP 08/40518</p>
+                        
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" aria-label="Instagram">
+                                <img src="/assets/images/ui/instagram-azul.png" alt="Instagram" class="icon-intro">
+                            </a>
+                            <a href="https://wa.me/5543999242805" target="_blank" aria-label="WhatsApp">
+                                <img src="/assets/images/ui/whatsapp-azul.png" alt="WhatsApp" class="icon-intro">
+                            </a>
+                            <a href="mailto:contato@eneidafeijo.com" aria-label="Email">
+                                <img src="/assets/images/ui/email-azul.png" alt="Email" class="icon-intro">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="home-image">
-                    <img src="images/eneida-portfolio.jpg" alt="Foto de Eneida Feijó">
-                </div>
-                <div class="home-bio">
-                    <h2>Minha Trajetória</h2>
-                    <p>Nos anos 2000, percebi um grande inicio de casos de depressão e ansiedade entre meus alunos. Isso
-                        aumentava em mim a vontade de cursar Psicologia e entender um pouco mais sobre os mecanismos da
-                        psique humana. Em 2019, finalmente iniciei o curso.</p>
-                    <p>Minha decisão pela abordagem humanista foi muito natural, pois sempre acreditei que a
-                        Espiritualidade deve fazer parte da vida humana, ela está presente em todos os aspectos de nossa
-                        vida. O ser humano sempre se preocupou sobre o sentido da vida, sobre a razão de estar no mundo.
-                        Então, ainda na faculdade, entrei em contato com Viktor Frankl, criador da Logoterapia - a
-                        terapia do sentido - e tive a certeza de que precisaria olhar para meu paciente como este ser
-                        integral, que precisa buscar um sentido para sua existência através da transcendência.</p>
-                    <p>Além disso, como dizia Carl Rogers, todos nós temos a tendência atualizante, ou seja, somos
-                        capazes de buscar nossa evolução e nossa melhoria como ser humano naturalmente. O psicólogo só
-                        precisa ser um facilitador desta tendência, ajudando o paciente a enxergar sua essência como o
-                        que de mais bonito ele possui.</p>
-                </div>
+                    
+                    <div class="home-image">
+                        <img src="/assets/images/profissionais/eneida-portfolio.jpg" alt="Psicóloga Eneida Feijó">
+                    </div>
+                    
+                    <div class="home-bio">
+                        <h2>Sobre mim</h2>
+                        <p>Sou psicóloga humanista, dedicada a auxiliar pessoas a encontrarem sentido em suas vidas e superarem angústias através do autoconhecimento e de um acolhimento terapêutico genuíno. Acredito que, por mais difíceis que sejam as circunstâncias, sempre há espaço para a liberdade de escolha e para a construção de uma vida com propósito.</p>
+                    </div>
+                    
+                    <div class="home-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/_Vg9Pw6vUlU?si=SUYnvyEhjFd2YHaq?rel=0&modestbranding=1" title="Apresentação Eneida Feijó" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
 
-                <div class="home-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/_Vg9Pw6vUlU?si=SUYnvyEhjFd2YHaq?rel=0&modestbranding=1"
-                        title="Apresentação Eneida Feijó" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
                 </div>
             </div>
         </section>
@@ -114,242 +60,110 @@
         <section id="eventos-concluidos" class="section-common">
             <div class="container">
                 <h2 class="section-title">Eventos Concluídos</h2>
-                <p class="section-subtitle">Memórias de encontros e imersões passadas.</p>
-
+                <p class="section-subtitle">Momentos de profunda conexão e cura que já vivenciamos em grupo.</p>
+                
                 <div class="event-grid">
-
                     <div class="event-card">
                         <div class="event-card-image">
-                            <img src="images/evento-tarde-de-imersao-2.jpg" alt="2ª Tarde de Imersão: Somos Água">
+                            <img src="/assets/images/eventos/evento-tarde-de-imersao-2.jpg" alt="2ª Tarde de Imersão">
                         </div>
                         <div class="event-card-content">
                             <h3>2ª Tarde de Imersão: Somos Água</h3>
-                            <p>Realizada em Dezembro de 2025, esta vivência trouxe o elemento Água como guia. Contamos
-                                com Meditação da Água (Psic. Eneida Feijó), Dança Meditação (Gislene Gaion) e a prática
-                                terapêutica de Watsu (Carla Santos), promovendo fluidez e limpeza emocional.</p>
-
-                            <a href="tardedeimersao2/index.html" target="_blank" class="btn-secondary">
-                                Ver Mídia e Feedback
-                            </a>
+                            <p>Uma vivência de fluidez e cura através da meditação e terapia aquática, acompanhada das condutoras Gislene Gaion e Carla Santos.</p>
+                            <a href="/pages/tardedeimersao2/index.html" class="btn-secondary">Ver Fotos do Evento</a>
                         </div>
                     </div>
-
+                    
                     <div class="event-card">
                         <div class="event-card-image">
-                            <img src="images/evento-tarde-de-imersao-1.jpg" alt="1ª Tarde de Imersão">
+                            <img src="/assets/images/eventos/evento-tarde-de-imersao-1.jpg" alt="1ª Tarde de Imersão">
                         </div>
                         <div class="event-card-content">
-                            <h3>1ª Tarde de Imersão: Um Mergulho Dentro de Si</h3>
-                            <p>Em Outubro de 2025, realizamos nossa primeira tarde de imersão em Londrina. Foi um
-                                encontro profundo com atividades de autoacolhimento (Psicologa -Eneida Feijó),
-                                Soundhealing (musicoterapeuta -Paola Rodrigues) e Pranayama (Instrutor -Daniel Kloster),
-                                proporcionando um espaço de reconexão e bem-estar.</p>
-
-                            <a href="tardedeimersao1/index.html" target="_blank" class="btn-secondary">
-                                Ver Mídia e Feedback
-                            </a>
+                            <h3>1ª Tarde de Imersão</h3>
+                            <p>Um mergulho profundo dentro de si. Nosso primeiro encontro presencial voltado para o autoconhecimento, musicoterapia e descompressão.</p>
+                            <a href="/pages/tardedeimersao1/index.html" class="btn-secondary">Ver Fotos do Evento</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
         <section id="proximos-eventos" class="section-common section-bg-alt">
             <div class="container">
-                <h2 class="section-title">Próximos Eventos</h2>
-                <p class="section-subtitle">Fique por dentro dos nossos futuros encontros.</p>
-
-                <div class="upcoming-event-container">
-                    <div class="save-the-date-card">
-                        <h3>3ª Tarde de Imersão - Reconexão:<br>A cura que vem da terra</h3>
-                        <div class="date-box">11 ABR</div>
-                        <p>Um convite para desacelerar, enraizar e liberar o que já não precisa ser carregado. As vagas são limitadas.</p>
-                        <p><strong>Veja os detalhes e garanta a sua inscrição!</strong></p>
-
-                        <a href="/tardedeimersao3/index.html" target="_blank" class="btn-primary" style="margin-top: 1.5rem;">
-                            Ver Detalhes e Inscrever-se
-                        </a>
-                    </div>
-                    <!--Ativar quando não houver eventos próximos
-                    <div class="save-the-date-card">
-                        <h3>Próximas Imersões</h3>
-                        <p style="font-size: 1.2rem; margin: 2rem 0;">
-                            Estamos preparando novas datas e temas especiais para 2026. <br>
-                            Fique atento(a) às novidades!
-                        </p>
-                        <p><strong>Acompanhe nosso Instagram para ser o primeiro a saber.</strong></p>
-
-                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" class="btn-primary"
-                            style="margin-top: 1rem;">
-                            Acompanhar no Instagram
-                        </a>
-                    </div>
-                    -->
+                <h2 class="section-title">Próxima Imersão</h2>
+                <div class="save-the-date-card">
+                    <h3>3ª Tarde de Imersão: A cura que vem da terra</h3>
+                    <div class="date-box">11 de Abril de 2026</div>
+                    <p>Vivência de reconexão, descarregamento e enraizamento com Meditação, Dança, Watsu e Coffee-break. Vagas limitadas!</p>
+                    <br>
+                    <a href="/pages/tardedeimersao3/index.html" class="btn-primary">Garantir minha vaga</a>
                 </div>
             </div>
         </section>
 
-
-        <section id="depoimentos" class="section-common section-bg-alt">
+        <section id="depoimentos" class="section-common">
             <div class="container">
-                <h2 class="section-title">Depoimentos</h2>
-                <p class="section-subtitle">O que dizem sobre minha jornada e meu trabalho.</p>
+                <h2 class="section-title">O que dizem</h2>
+                <p class="section-subtitle">Feedbacks de quem já participou de nossas vivências e atendimentos.</p>
             </div>
-
+            
             <div class="testimonial-scroller">
                 <div class="testimonial-scroller-inner">
                     <div class="testimonial-card-scrolling">
-                        <p class="quote">"A Eneida é uma profissional de uma sensibilidade ímpar. Sua abordagem
-                            humanista me ajudou a enxergar meus próprios caminhos e encontrar força em mim mesma."</p>
-                        <span class="author">- A. M. (Paciente)</span>
+                        <p class="quote">"A tarde de imersão com a Dra. Eneida foi uma experiência incrível para mim. Gostei muito da musicoterapia, que realmente traz paz para a mente e para o corpo."</p>
+                        <span class="author">- Dayane Gluck</span>
                     </div>
-
                     <div class="testimonial-card-scrolling">
-                        <p class="quote">"Encontrei na terapia um espaço de acolhimento e escuta verdadeira. Sou muito
-                            grata por todo o processo de autoconhecimento que construímos juntas."</p>
-                        <span class="author">- L. F. (Paciente)</span>
+                        <p class="quote">"A imersão foi incrível, a proposta de mergulho me levou para lugares desconhecidos dentro de mim. Todos os momentos foram de muito acolhimento e amor."</p>
+                        <span class="author">- Marina Leal</span>
                     </div>
-
                     <div class="testimonial-card-scrolling">
-                        <p class="quote">"Profissional excelente, muito atenciosa e dedicada. Me senti segura para
-                            explorar questões difíceis com ela."</p>
-                        <span class="author">- R. S. (Paciente)</span>
+                        <p class="quote">"A tarde de imersão foi uma surpresa muito positiva para mim. Fiquei satisfeita e grata com o autocuidado que me proporcionei."</p>
+                        <span class="author">- Célia Peres</span>
                     </div>
-
                     <div class="testimonial-card-scrolling">
-                        <p class="quote">"O trabalho da Eneida vai além do consultório. As reflexões que ela propõe
-                            ecoam durante toda a semana. Recomendo fortemente."</p>
-                        <span class="author">- J. P. (Paciente)</span>
+                        <p class="quote">"Foi uma tarde revigorante. A prática do Watsu foi algo que nunca tinha experimentado, uma sensação de leveza total."</p>
+                        <span class="author">- Participante do Evento 2</span>
                     </div>
-
                     <div class="testimonial-card-scrolling">
-                        <p class="quote">"Uma psicóloga que realmente se importa. A abordagem dela sobre sentido da vida
-                            mudou minha perspectiva sobre meus desafios."</p>
-                        <span class="author">- C. B. (Paciente)</span>
+                        <p class="quote">"Sair da rotina e conectar com a água foi essencial para meu final de ano. Gratidão Eneida!"</p>
+                        <span class="author">- Participante do Evento 2</span>
                     </div>
-
                 </div>
             </div>
         </section>
 
         <section id="publicacoes" class="section-common section-bg-alt">
             <div class="container">
-                <h2 class="section-title">Publicações e Mídia</h2>
-                <p class="section-subtitle">Reflexões e conteúdos para seu dia a dia.</p>
-
+                <h2 class="section-title">Publicações Recentes</h2>
+                <p class="section-subtitle">Reflexões sobre saúde mental, logoterapia e os desafios do cotidiano.</p>
+                
                 <div class="publication-grid">
-
                     <div class="publication-card">
-                        <img src="images/post-o-vazio-dos-amores-indisponiveis.jpeg"
-                            alt="post o vazio dos amores indisponíveis">
-                        <h3>O vazio dos amores indisponíveis</h3>
-                        <p>Há pessoas completamente indisponíveis para o amor. Não cabe a você forçar a situação para
-                            que o caminho se abra.</p>
-                        <a href="https://www.instagram.com/p/DOPGVZWkYAW/?igsh=dzVzY2w1NGh0NGZo&img_index=1"
-                            target="_blank" class="btn-secondary">Ler
-                            no Instagram</a>
+                        <img src="/assets/images/posts/post-solitude-amar-a-propria-companhia.jpeg" alt="Solitude">
+                        <h3>Sobre a Solitude</h3>
+                        <p>É quando você aprende a amar a sua companhia e entende que não há nada de errado em estar sozinha.</p>
+                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" class="btn-secondary">Ler no Instagram</a>
                     </div>
-
                     <div class="publication-card">
-                        <img src="images/post-pessoas-nao-sao-descartaveis.jpeg"
-                            alt="post-pessoas-nao-sao-descartaveis">
-                        <h3>Pessoas não são descartáveis</h3>
-                        <p>Responsabilidade afetiva é ter consciência dos sentimentos e expectativas do outro e agir com
-                            cuidado. Envolve comunicação clara, respeito aos limites e assumir como nossas atitudes
-                            impactam as emoções das pessoas.</p>
-                        <a href="https://www.instagram.com/p/DOH5jujEdta/?igsh=MXU3M2F1MHpsc2RhYg%3D%3D" target="_blank"
-                            class="btn-secondary">Ler
-                            no Instagram</a>
+                        <img src="/assets/images/posts/post-pessoas-nao-sao-descartaveis.jpeg" alt="Pessoas não são descartáveis">
+                        <h3>Vínculos Reais</h3>
+                        <p>Pessoas não são descartáveis. Vivemos em uma era líquida, mas a responsabilidade afetiva nunca sai de moda.</p>
+                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" class="btn-secondary">Ler no Instagram</a>
                     </div>
-
                     <div class="publication-card">
-                        <img src="images/post-solitude-amar-a-propria-companhia.jpeg"
-                            alt="post-solitude-amar-a-propria-companhia">
-                        <h3>Solitude - amar a própria companhia</h3>
-                        <p>Para ter um relacionamento saudável, é essencial gostar primeiro de sua própria companhia.
-                        </p>
-                        <a href="https://www.instagram.com/p/DRIhol_EYol/?igsh=MXVjd3Rtd3o1OWtwOA%3D%3D" target="_blank"
-                            class="btn-secondary">Ler
-                            no Instagram</a>
+                        <img src="/assets/images/posts/post-o-vazio-dos-amores-indisponiveis.jpeg" alt="O vazio dos amores indisponíveis">
+                        <h3>Amores Indisponíveis</h3>
+                        <p>O vazio provocado por se apegar a relações onde não há espaço e disponibilidade emocional genuína.</p>
+                        <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" class="btn-secondary">Ler no Instagram</a>
                     </div>
-
-                </div>
-
-                <div class="section-cta">
-                    <a href="https://www.instagram.com/psi.eneidafeijo/" target="_blank" class="btn-primary">
-                        Siga @psi.eneidafeijo no Instagram
-                    </a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer id="contato" class="main-footer">
-        <div class="container">
+    <footer class="main-footer" id="app-footer"></footer>
 
-            <div class="agendamento-cta">
-                <h2 class="section-title">Agende sua Sessão</h2>
-                <p class="section-subtitle">Estou disponível para conversarmos. Escolha o melhor canal para você.
-                </p>
-
-                <div class="agendamento-botoes">
-                    <a href="https://wa.me/5543999242805?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.%20Qual%20sua%20disponibilidade%20de%20hor%C3%A1rios%3F "
-                        class="btn-whatsapp">
-                        <img src="images/whatsapp-botao.png" alt="WhatsApp" class="icon-btn-large">
-                        Agendar pelo WhatsApp
-                    </a>
-
-                    <a href="mailto:contato@eneidafeijo.com" class="btn-email">
-                        <img src="images/email-branco.png" alt="Email" class="icon-btn-large">
-                        Agendar por Email
-                    </a>
-                </div>
-            </div>
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>Eneida Feijó</h3>
-                    <p>Psicóloga Humanista com foco na Logoterapia e no Sentido da Vida.<br>CRP 08/40518</p>
-                </div>
-                <div class="footer-contact">
-                    <h3>Outros Contatos</h3>
-
-                    <p>
-                        <img src="images/whatsapp-gold.png" alt="WhatsApp" class="icon-footer">
-                        <a href="https://wa.me/5543999242805?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20d%C3%BAvidas%20ou%20saber%20mais%20sobre%20o%20atendimento%20psicol%C3%B3gico.
-                        " target="_blank" aria-label="WhatsApp">+55 43 99924-2805</a>
-                    </p>
-
-                    <p>
-                        <img src="images/email-gold.png" alt="Email" class="icon-footer">
-                        <a href="mailto:contato@eneidafeijo.com" aria-label="Email">contato@eneidafeijo.com</a>
-
-                    </p>
-
-                    <p>
-                        <img src="images/instagram-gold.png" alt="Instagram" class="icon-footer">
-                        <a href="https://www.instagram.com/psi.eneidafeijo/">@psi.eneidafeijo</a>
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="footer-copyright">
-            <div class="copyright-content">
-                <p>&copy; 2025 Eneida Feijó. Todos os direitos reservados.</p>
-                <span class="divider">|</span>
-                <p class="dev-credit">
-                    Site por <a href="https://linktr.ee/raphaelfeijosalles" target="_blank"
-                        title="Orçamento para Criação de Sites">Raphael Salles</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="script.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
 </body>
-
 </html>
