@@ -1,90 +1,177 @@
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    background-color: var(--color-base);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    z-index: 1000;
-}
-.navbar {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.nav-logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--color-primary);
-}
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    align-items: center;
-}
-.nav-link {
-    font-weight: 500;
-    color: var(--color-text-light);
-    padding: 5px 0;
-    position: relative;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-accent);
-    transition: width 0.3s ease;
-}
-.nav-link:hover::after,
-.nav-link.active::after { width: 100%; }
-.nav-link.active { color: var(--color-primary); font-weight: 700; }
-.hamburger {
-    display: none; 
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-}
-.hamburger .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
+/* ======== FOOTER (Global) ======== */
+.main-footer {
     background-color: var(--color-primary);
-    transition: all 0.3s ease-in-out;
+    color: var(--color-footer-text);
+    padding-top: 4rem;
+    margin-top: 3rem;
 }
+
+.main-footer h3 {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.main-footer p {
+    color: var(--color-footer-text);
+}
+
+.main-footer a {
+    color: var(--color-footer-link);
+    font-weight: 500;
+}
+
+.main-footer a:hover {
+    color: var(--color-accent);
+}
+
+/* Bloco Agendamento */
+.agendamento-cta {
+    text-align: center;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--color-secondary);
+}
+
+.agendamento-cta .section-title {
+    color: var(--color-base);
+}
+
+.agendamento-cta .section-subtitle {
+    color: var(--color-footer-text);
+    margin-bottom: 2.5rem;
+}
+
+/* --- GRID DE CONTATOS (Compacto & Deslocado) --- */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    /* Largura compacta para alinhar com botões de cima */
+    max-width: 650px;
+    width: 100%;
+
+    /* Centraliza o bloco na tela */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Empurra o conteúdo interno um pouco para direita para ajuste óptico */
+    padding-left: 3rem;
+}
+
+.footer-about,
+.footer-contact {
+    text-align: left;
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.footer-contact svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-accent);
+}
+
+/* Copyright e Créditos */
+.footer-copyright {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-secondary);
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-footer-subtle);
+}
+
+.copyright-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: var(--color-footer-subtle);
+    font-size: 0.9rem;
+}
+
+.copyright-content .divider {
+    color: var(--color-secondary);
+    opacity: 0.5;
+}
+
+.dev-credit a {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dev-credit a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Ícone do Rodapé (Gold Personalizados) --- */
+.icon-footer {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: 10px;
+    display: block;
+}
+
+/* Ajuste de alinhamento para os itens do rodapé */
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.payment-reminder-alert {
+    text-align: center;
+}
+
 @media (max-width: 992px) {
-    .navbar { padding: 0 20px; max-width: 100%; }
-    .hamburger { display: block; z-index: 1002; }
-    .nav-menu {
-        position: fixed; 
-        left: -100%;     
-        top: var(--header-height); 
-        flex-direction: column; 
-        background-color: var(--color-base);
-        width: 100%;
-        height: calc(100vh - var(--header-height)); 
+    .footer-grid {
+        grid-template-columns: 1fr;
         text-align: center;
-        transition: left 0.3s ease-in-out;
-        box-shadow: 0 8px 10px rgba(0,0,0,0.1);
-        padding-top: 2rem;
-        gap: 0; 
-        z-index: 1001;
+        max-width: 100%;
+        width: 100%;
+        padding: 0 2rem;
     }
-    .nav-menu.active { left: 0; }
-    .nav-item { margin: 1.5rem 0; }
-    .nav-link { font-size: 1.2rem; }
-    .hamburger.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .footer-about,
+    .footer-contact {
+        text-align: center;
+        justify-self: center;
+    }
+
+    .footer-contact p {
+        justify-content: center;
+    }
+
+    .copyright-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .copyright-content .divider {
+        display: none;
+    }
+
+    .footer-copyright {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
