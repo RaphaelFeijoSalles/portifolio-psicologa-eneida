@@ -2,6 +2,7 @@ import { loadComponent } from './utils/componentLoader.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
 import { initClipboardHandler } from './utils/clipboard.js';
 import { BannerController } from './modules/BannerController.js';
+import { FooterController } from './modules/FooterController.js'
 
 // Função para verificar se estamos na página principal
 function isMainPage() {
@@ -26,6 +27,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 3. Inicializa Classes Modulares (agora que o HTML existe)
     const headerMenu = new HeaderMenu();
     headerMenu.init();
+    const footer = new FooterController()
+    footer.init()
 
     // 4. Utilitários das páginas internas
     initClipboardHandler(); // Vai checar se o botão existe antes de aplicar
