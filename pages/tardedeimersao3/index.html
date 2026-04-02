@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3ª Tarde de Imersão: A cura que vem da terra - Eneida Feijó</title>
 
-    <link rel="icon" type="image/png" href="../../assets/images/logo.png">
+    <link rel="icon" type="image/png" href="../../assets/images/ui/logo.png">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,40 +159,29 @@
                         <h3>Cartão de Crédito</h3>
                         <p>Pagamento rápido e seguro, processado pela <strong>InfinitePay</strong>.</p>
 
-                        <div
-                            style="background: var(--color-background-alt); border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; margin: 15px 0;">
-                            <span
-                                style="display: block; font-size: 0.8rem; color: var(--color-text-light); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Pagamento
-                                aceito via:</span>
-                            <div
-                                style="display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg"
-                                    alt="Visa" title="Visa" style="height: 16px;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                                    alt="Mastercard" title="Mastercard" style="height: 20px;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Elo_card_association_logo_-_black_text.svg" alt="Elo"
-                                    title="Elo" style="height: 18px;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
-                                    alt="Apple Pay" title="Apple Pay" style="height: 20px;">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
-                                    alt="Google Pay" title="Google Pay" style="height: 20px;">
+                        <div class="payment-brands-box">
+                            <span class="brands-label">Pagamento aceito via:</span>
+                            <div class="brands-logos">
+                                <img src="../../assets/images/ui/visa.svg" alt="Visa" title="Visa" class="brand-visa">
+                                <img src="../../assets/images/ui/mastercard.svg" alt="Mastercard" title="Mastercard">
+                                <img src="../../assets/images/ui/elo.svg" alt="Elo" title="Elo" class="brand-elo">
+                                <img src="../../assets/images/ui/apple-pay.svg" alt="Apple Pay" title="Apple Pay">
+                                <img src="../../assets/images/ui/google-pay.svg" alt="Google Pay" title="Google Pay">
                             </div>
                         </div>
 
-                        <div class="payment-email-warning" style="margin-bottom: 10px;">
+                        <div class="payment-warning">
                             <strong>Atenção:</strong> Na próxima tela, utilize o <strong>mesmo e-mail</strong> que
-                            preencheu no formulário acima.
+                            preencheu no formulário.
                         </div>
 
-                        <div class="payment-email-warning"
-                            style="background-color: #fff8e1; border-left-color: #ffc107;">
+                        <div class="payment-warning warning-alert">
                             <strong>Parcelamento:</strong> Disponível em até 12x. As taxas de juros do parcelamento são
                             estabelecidas e cobradas diretamente pela InfinitePay.
                         </div>
 
                         <a href="https://link.infinitepay.io/raphael-feijo/VC1D-6WhQRlIK5-240,00" target="_blank"
-                            class="btn-primary"
-                            style="margin-top: 15px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
+                            class="btn-primary btn-icon mt-15">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -207,13 +196,13 @@
                         <h3>Pagamento via PIX</h3>
                         <p>Aponte a câmera do seu celular para o QR Code ou use a chave para realizar o pagamento.</p>
                         <div class="pix-details">
-                            <div class="pix-qr-small"><img src="../../assets/images/eventos/QR_code_pix.jpg"
-                                    alt="QR Code">
+                            <div class="pix-qr-small">
+                                <img src="../../assets/images/eventos/QR_code_pix.jpg" alt="QR Code PIX">
                             </div>
                             <div class="pix-key">
                                 <strong>Chave PIX (Celular):</strong>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 5px 0;">
+
+                                <div class="pix-key-wrapper">
                                     <span id="pix-key-texto">43 9 99242805</span>
                                     <button class="btn-copy-icon-only" id="btn-copy-pix" aria-label="Copiar chave PIX"
                                         title="Copiar chave PIX">
@@ -225,6 +214,7 @@
                                         </svg>
                                     </button>
                                 </div>
+
                                 <strong>ENEIDA LOPES FEIJO</strong>
                             </div>
                         </div>

@@ -1,41 +1,202 @@
-.form-container {
-    max-width: 800px; margin: 0 auto; border: 1px solid #ddd; border-radius: var(--border-radius); overflow: hidden;
+/* ==========================================================================
+   COMPONENTE: FORMULÁRIOS E CHECKOUT (Forms)
+   Documentação: Estilos para o wrapper do Google Forms, feedback de sucesso
+   e os cartões de investimento (PIX e Cartão de Crédito).
+   ========================================================================== */
+
+/* --- 1. Container Geral e Feedback do Forms --- */
+.form-wrapper { 
+    position: relative; 
+    width: 100%; 
+    transition: all 0.4s ease-in-out; 
 }
-.pix-container {
-    display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; max-width: 900px; margin: 0 auto;
-    background: var(--color-base); padding: 3rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow);
-}
-.pix-qr img { width: 100%; max-width: 250px; height: auto; border: 1px solid #ddd; border-radius: 4px; }
-.pix-info h3 { font-size: 2rem; font-weight: 700; }
-.chave-pix {
-    background: var(--color-background-alt); border: 1px dashed var(--color-secondary); padding: 1rem; border-radius: 4px; margin: 1.5rem 0; font-size: 1.1rem; text-align: center;
-}
-.chave-pix strong { display: block; font-size: 0.9rem; color: var(--color-text-light); }
-.chave-pix span { font-size: 1.25rem; font-weight: 700; color: var(--color-text-dark); letter-spacing: 1px; }
-.investment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 1000px; margin: 3rem auto 0 auto; }
-.investment-card {
-    background-color: var(--color-base); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); text-align: center; display: flex; flex-direction: column;
-}
-.investment-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--color-primary); }
-.investment-card p { margin-bottom: 1.5rem; flex-grow: 1; }
-.investment-card .btn-primary { margin-top: auto; }
-.pix-details { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-top: 1rem; }
-.pix-qr-small img { max-width: 180px; border-radius: 4px; border: 1px solid #eee; }
-.pix-key { background: var(--color-background-alt); border: 1px dashed var(--color-secondary); padding: 1rem; border-radius: 4px; font-size: 1.1rem; text-align: center; width: 100%; }
-.pix-key strong { display: block; font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem; }
-.pix-key span { font-size: 1.25rem; font-weight: 700; color: var(--color-text-dark); letter-spacing: 1px; }
-.form-wrapper { position: relative; width: 100%; transition: all 0.4s ease-in-out; }
+
 .success-feedback {
-    display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-    background-color: #fdfaf3; border: 2px dashed #d4af37; border-radius: 12px; padding: 3rem 2rem; margin: 2rem auto; max-width: 600px; animation: fadeInScale 0.5s ease-out forwards;
+    display: none; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    background-color: #fdfaf3; 
+    border: 2px dashed #d4af37; 
+    border-radius: 12px; 
+    padding: 3rem 2rem; 
+    margin: 2rem auto; 
+    max-width: 600px; 
+    animation: fadeInScale 0.5s ease-out forwards;
 }
+
 .success-icon {
-    width: 60px; height: 60px; background-color: #4CAF50; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    width: 60px; 
+    height: 60px; 
+    background-color: #4CAF50; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 1.5rem; 
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
-.success-icon svg { width: 30px; height: 30px; color: white; }
-@keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+
+.success-icon svg { 
+    width: 30px; 
+    height: 30px; 
+    color: white; 
+}
+
+/* --- 2. Grid de Investimentos (Cards principais) --- */
+.investment-options { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 2.5rem; 
+    max-width: 1000px; 
+    margin: 3rem auto 0 auto; 
+}
+
+.investment-card {
+    background-color: var(--color-base); 
+    padding: 2.5rem; 
+    border-radius: var(--border-radius); 
+    box-shadow: var(--box-shadow); 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.investment-card h3 { 
+    font-size: 1.8rem; 
+    margin-bottom: 1rem; 
+    color: var(--color-primary); 
+}
+
+.investment-card p { 
+    margin-bottom: 1.5rem; 
+    flex-grow: 1; 
+}
+
+.investment-card .btn-primary { 
+    margin-top: auto; 
+}
+
+/* --- 3. Checkout: Bandeiras do Cartão (InfinitePay) --- */
+.payment-brands-box {
+    background: var(--color-background-alt); 
+    border: 1px solid #e0e0e0; 
+    border-radius: var(--border-radius); 
+    padding: 12px 15px; 
+    margin: 15px 0;
+}
+
+.brands-label { 
+    display: block; 
+    font-size: 0.8rem; 
+    color: var(--color-text-light); 
+    margin-bottom: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    font-weight: 600; 
+}
+
+.brands-logos { 
+    display: flex; 
+    gap: 14px; 
+    align-items: center; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+
+.brands-logos img { 
+    height: 20px; /* Altura padrão base para todas */
+    width: auto; 
+    object-fit: contain; 
+    opacity: 0.85; 
+    transition: opacity 0.2s ease; 
+}
+
+.brands-logos img:hover { 
+    opacity: 1; 
+}
+
+/* Correções óticas para logotipos específicos parecerem do mesmo tamanho */
+.brands-logos .brand-visa { height: 16px; }
+.brands-logos .brand-elo { height: 18px; }
+
+/* --- 4. Checkout: Alertas Informativos --- */
+.payment-warning {
+    background-color: #fdfaf3; 
+    border-left: 4px solid #d4af37; 
+    padding: 12px 15px; 
+    margin-bottom: 15px; 
+    font-size: 0.85rem; 
+    text-align: left; 
+    color: #555; 
+    border-radius: 0 4px 4px 0; 
+    line-height: 1.5;
+}
+
+/* Modificador para alertas que requerem mais atenção (ex: juros/parcelamento) */
+.payment-warning.warning-alert {
+    background-color: #fff8e1; 
+    border-left-color: #ffc107;
+}
+
+/* --- 5. Checkout: Pagamento via PIX --- */
+.pix-details { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1.5rem; 
+    margin-top: 1rem; 
+}
+
+.pix-qr-small img { 
+    max-width: 180px; 
+    border-radius: 4px; 
+    border: 1px solid #eee; 
+}
+
+.pix-key { 
+    background: var(--color-background-alt); 
+    border: 1px dashed var(--color-secondary); 
+    padding: 1rem; 
+    border-radius: 4px; 
+    font-size: 1.1rem; 
+    text-align: center; 
+    width: 100%; 
+}
+
+.pix-key strong { 
+    display: block; 
+    font-size: 0.9rem; 
+    color: var(--color-text-light); 
+    margin-bottom: 0.5rem; 
+}
+
+/* Container que alinha a chave e o botão de copiar lado a lado */
+.pix-key-wrapper {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin: 10px 0;
+}
+
+.pix-key-wrapper span { 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    color: var(--color-text-dark); 
+    letter-spacing: 1px; 
+}
+
+/* --- 6. Animações --- */
+@keyframes fadeInScale { 
+    0% { opacity: 0; transform: scale(0.95); } 
+    100% { opacity: 1; transform: scale(1); } 
+}
+
+/* --- 7. Responsividade --- */
 @media (max-width: 992px) {
-    .pix-container { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
-    .pix-qr img { margin: 0 auto; }
-    .investment-options { grid-template-columns: 1fr; }
+    .investment-options { 
+        grid-template-columns: 1fr; 
+    }
 }
