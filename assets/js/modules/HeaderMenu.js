@@ -89,14 +89,15 @@ export class HeaderMenu {
 
     // Lógica para rolagem suave compensando a altura do header e do banner dinâmico
     smoothScroll(e) {
-        const linkHref = e.currentTarget.getAttribute("href");
+        const linkHref = e.currentTarget.getAttribute("href"); 
         
-        // Verifica se o link é para a própria página em que estamos
-        const isIndexPage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
-        
-        if (linkHref.startsWith("#") || (linkHref.startsWith("/index.html#") && isIndexPage)) {
+        // Descobre a URL real da página que estamos agora e a URL do botão clicado
+        const currentUrl = window.location.origin + window.location.pathname;
+        const targetUrl = new URL(e.currentTarget.href).origin + new URL(e.currentTarget.href).pathname;
+
+        // Se o link é para a MESMA página que estamos, fazemos o scroll suave
+        if (currentUrl === targetUrl && linkHref.includes("#")) {
             e.preventDefault();
-            
             const targetId = linkHref.substring(linkHref.indexOf("#"));
             const targetElement = document.querySelector(targetId);
 
@@ -111,10 +112,9 @@ export class HeaderMenu {
                     top: offsetPosition,
                     behavior: "smooth"
                 });
-            } else if (linkHref.startsWith("/index.html#")) {
-                // Se a seção não existe nesta página (ex: clicou em 'Home' estando na pág. do Evento)
-                window.location.href = linkHref;
             }
         }
+        // Se for para OUTRA página, nós não fazemos o e.preventDefault(). 
+        // O navegador naturalmente carrega o index e já rola pro lugar certo!
     }
 }

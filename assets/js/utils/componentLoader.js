@@ -1,14 +1,16 @@
 /**
- * Carrega um arquivo HTML e o injeta dentro de um elemento alvo.
- * @param {string} targetId - O ID do elemento que receberá o HTML.
- * @param {string} filePath - O caminho do arquivo HTML (ex: '/components/header.html').
+ * Carrega um arquivo HTML, injeta o caminho base correto e coloca na tela.
  */
-export async function loadComponent(targetId, filePath) {
+export async function loadComponent(targetId, filePath, projectRoot = './') {
     try {
         const response = await fetch(filePath);
         if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
         
-        const html = await response.text();
+        let html = await response.text();
+        
+        // Troca a variável {{ROOT}} pelo caminho dinâmico da raiz!
+        html = html.replace(/\{\{ROOT\}\}/g, projectRoot);
+        
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
