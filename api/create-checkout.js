@@ -42,7 +42,7 @@ export default async function handler(req, res) {
             customer: {
                 name: customerData.nome,
                 email: customerData.email,
-                phone_number: customerData.whatsapp
+                phone_number: "+55" + customerData.whatsapp.replace(/\D/g, '')
             }
         };
 
