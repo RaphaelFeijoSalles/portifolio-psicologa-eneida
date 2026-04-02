@@ -1,5 +1,5 @@
 /**
- * Controla os comportamentos da página de eventos (Formulário Nativo e Integração).
+ * Controla os comportamentos da página de eventos (Formulário Nativo, Máscaras e Integração).
  */
 export class EventPageController {
     constructor() {
@@ -8,29 +8,64 @@ export class EventPageController {
         
         // Binds
         this.handleCheckoutSubmit = this.handleCheckoutSubmit.bind(this);
+        this.applyPhoneMask = this.applyPhoneMask.bind(this);
     }
 
     init() {
         if (this.form) {
             this.form.addEventListener('submit', this.handleCheckoutSubmit);
+            
+            // Aplica a máscara em tempo real nos campos de telefone
+            const whatsappInput = document.getElementById('whatsapp');
+            const emergenciaInput = document.getElementById('emergencia');
+            
+            if (whatsappInput) whatsappInput.addEventListener('input', this.applyPhoneMask);
+            if (emergenciaInput) emergenciaInput.addEventListener('input', this.applyPhoneMask);
         }
+    }
+
+    // Função de Máscara de Telefone: Transforma 43999999999 em (43) 99999-9999
+    applyPhoneMask(e) {
+        // Remove tudo que não for dígito
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        // Aplica a formatação dinamicamente enquanto o usuário digita
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    }
+
+    // Função validadora de E-mail via Regex
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     async handleCheckoutSubmit(e) {
         e.preventDefault(); // Impede a página de recarregar
 
-        // 1. Esconde o formulário e mostra o Loading
-        this.form.style.display = 'none';
-        this.loadingState.style.display = 'block';
-
-        // 2. Captura todos os dados digitados
+        // 1. Coleta e Valida os Dados no Front-end antes de mandar para a API
         const formData = new FormData(this.form);
         const customerData = Object.fromEntries(formData.entries());
 
+        // Validação extra de Email
+        if (!this.isValidEmail(customerData.email)) {
+            alert("Por favor, insira um endereço de e-mail válido.");
+            document.getElementById('email').focus();
+            return;
+        }
+
+        // Validação extra de Telefone (Garante que tenha pelo menos o DDD e 8 números)
+        const phoneDigits = customerData.whatsapp.replace(/\D/g, '');
+        if (phoneDigits.length < 10) {
+            alert("Por favor, insira um número de telefone com DDD válido.");
+            document.getElementById('whatsapp').focus();
+            return;
+        }
+
+        // 2. Esconde o formulário e mostra o Loading
+        this.form.style.display = 'none';
+        this.loadingState.style.display = 'block';
+
         try {
-            // 3. Envia para a NOSSA futura API na Vercel (ou n8n)
-            // OBS: Por enquanto este endpoint vai dar erro (404) porque ainda não criamos a API,
-            // mas o front-end já está 100% preparado!
+            // 3. Envia para a API na Vercel
             const response = await fetch('/api/create-checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
