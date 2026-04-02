@@ -1,48 +1,57 @@
 /**
- * Controla os comportamentos específicos das páginas de eventos,
- * como a escuta de carregamento do iframe do Google Forms e rolagens.
+ * Controla os comportamentos da página de eventos (Formulário Nativo e Integração).
  */
 export class EventPageController {
     constructor() {
-        this.iframeLoadCount = 0;
-        this.iframe = document.getElementById('google-form-iframe');
-        this.successFeedback = document.getElementById('success-feedback');
+        this.form = document.getElementById('native-checkout-form');
+        this.loadingState = document.getElementById('checkout-loading');
         
         // Binds
-        this.handleFormLoad = this.handleFormLoad.bind(this);
-        this.scrollToPayment = this.scrollToPayment.bind(this);
+        this.handleCheckoutSubmit = this.handleCheckoutSubmit.bind(this);
     }
 
     init() {
-        // 1. Escuta o carregamento do Iframe dinamicamente (sem sujar o HTML)
-        if (this.iframe) {
-            this.iframe.addEventListener('load', this.handleFormLoad);
-        }
-
-        // 2. Escuta o botão de rolar para o pagamento usando Data-Attributes
-        const btnPayment = document.querySelector('[data-action="scroll-to-payment"]');
-        if (btnPayment) {
-            btnPayment.addEventListener('click', this.scrollToPayment);
+        if (this.form) {
+            this.form.addEventListener('submit', this.handleCheckoutSubmit);
         }
     }
 
-    handleFormLoad() {
-        this.iframeLoadCount++;
-        // O primeiro load é o form vazio. O segundo é após o submit.
-        if (this.iframeLoadCount > 1) {
-            if (this.iframe) this.iframe.style.display = 'none';
-            
-            if (this.successFeedback) {
-                this.successFeedback.style.display = 'flex';
-                this.successFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    async handleCheckoutSubmit(e) {
+        e.preventDefault(); // Impede a página de recarregar
+
+        // 1. Esconde o formulário e mostra o Loading
+        this.form.style.display = 'none';
+        this.loadingState.style.display = 'block';
+
+        // 2. Captura todos os dados digitados
+        const formData = new FormData(this.form);
+        const customerData = Object.fromEntries(formData.entries());
+
+        try {
+            // 3. Envia para a NOSSA futura API na Vercel (ou n8n)
+            // OBS: Por enquanto este endpoint vai dar erro (404) porque ainda não criamos a API,
+            // mas o front-end já está 100% preparado!
+            const response = await fetch('/api/create-checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(customerData)
+            });
+
+            if (!response.ok) throw new Error('Falha ao gerar pagamento');
+
+            const data = await response.json();
+
+            // 4. Redireciona o usuário para o link da InfinitePay!
+            if (data.checkoutUrl) {
+                window.location.href = data.checkoutUrl;
             }
-        }
-    }
 
-    scrollToPayment() {
-        const paymentSection = document.querySelector('.investment-options');
-        if (paymentSection) {
-            paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (error) {
+            console.error(error);
+            alert("Ocorreu um erro ao gerar o pagamento. Por favor, tente novamente ou entre em contato pelo WhatsApp.");
+            // Se der erro, volta a mostrar o formulário
+            this.loadingState.style.display = 'none';
+            this.form.style.display = 'block';
         }
     }
 }
