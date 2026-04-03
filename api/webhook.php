@@ -13,8 +13,8 @@ if (isset($data['order_nsu']) && isset($data['paid_amount'])) {
         "status" => "PAGO (" . $data['capture_method'] . ")"
     ]);
 
-    // Cola a MESMA URL do Google Script aqui!
-    $googleWebhook = "https://script.google.com/macros/s/AKfycbygdC7Zadtk8FbPA-md8rUOZWi8AJYLsr34MUBqcstvMrQEEYkvD82ppJP3hmETnC3Hkw/exec"; 
+    // URL do Google Script aqui!
+    $googleWebhook = "URL_DO_GOOGLE_AQUI"; 
 
     $ch = curl_init($googleWebhook);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

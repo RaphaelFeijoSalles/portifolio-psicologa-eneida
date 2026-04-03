@@ -22,9 +22,9 @@ try {
     // 3. SALVAR NO GOOGLE SHEETS
     // ==========================================
     // COLE A URL DO SEU WEBHOOK DO GOOGLE AQUI:
-    $googleWebhook = "https://script.google.com/macros/s/AKfycbygdC7Zadtk8FbPA-md8rUOZWi8AJYLsr34MUBqcstvMrQEEYkvD82ppJP3hmETnC3Hkw/exec"; 
+    $googleWebhook = "URL_DO_GOOGLE_AQUI"; 
 
-    if ($googleWebhook !== "https://script.google.com/macros/s/AKfycbygdC7Zadtk8FbPA-md8rUOZWi8AJYLsr34MUBqcstvMrQEEYkvD82ppJP3hmETnC3Hkw/exec") {
+    if ($googleWebhook !== "URL_DO_GOOGLE_AQUI") {
         $ch = curl_init($googleWebhook);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customerData));
