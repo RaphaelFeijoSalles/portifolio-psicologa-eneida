@@ -4,6 +4,7 @@ import { initClipboardHandler } from './utils/clipboard.js';
 import { BannerController } from './modules/BannerController.js';
 import { FooterController } from './modules/FooterController.js';
 import { EventPageController } from './modules/EventPageController.js';
+import { EventListController } from './modules/EventListController.js';
 
 //Calcula a raiz do site baseada no próprio arquivo JS
 const PROJECT_ROOT = new URL('../../', import.meta.url).pathname;
@@ -43,6 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const eventController = new EventPageController();
     eventController.init();
+
+    EventListController.init();
 
     // 4. Utilitários das páginas internas
     initClipboardHandler();
