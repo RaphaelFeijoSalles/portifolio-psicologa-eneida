@@ -21,7 +21,6 @@ if (isset($data['order_nsu']) && isset($data['paid_amount'])) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $googlePayload);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_exec($ch);
-    curl_close($ch);
 
     // Responde 200 OK para a InfinitePay parar de insistir
     http_response_code(200);

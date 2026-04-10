@@ -21,19 +21,31 @@ try {
     // ==========================================
     // 3. SALVAR NO GOOGLE SHEETS
     // ==========================================
+
     // COLE A URL DO SEU WEBHOOK DO GOOGLE AQUI:
-    $googleWebhook = "URL_DO_GOOGLE_AQUI"; 
+    $googleWebhook = "URL_DO_GOOGLE";
 
-    if ($googleWebhook !== "URL_DO_GOOGLE_AQUI") {
+    // Verifica apenas se a URL não está vazia e se pertence ao Google
+    if (!empty($googleWebhook) && strpos($googleWebhook, 'script.google.com') !== false) {
         $ch = curl_init($googleWebhook);
+        
+        // Configurações blindadas para o Google Apps Script no PHP
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customerData));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-        // Executa silenciosamente. Se der erro na planilha, não trava o pagamento.
-        curl_exec($ch);
-        curl_close($ch);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+        
+        $resultado_google = curl_exec($ch);
+        
+        if(curl_errno($ch)){
+            error_log("Erro cURL Google Sheets: " . curl_error($ch));
+        }
+        
     }
-
     // ==========================================
     // 4. GERAR LINK NA INFINITEPAY
     // ==========================================
@@ -68,7 +80,6 @@ try {
     
     $response = curl_exec($chIP);
     $httpCode = curl_getinfo($chIP, CURLINFO_HTTP_CODE);
-    curl_close($chIP);
 
     if ($httpCode >= 400) {
         http_response_code(500);

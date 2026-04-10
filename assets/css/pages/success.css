@@ -1,0 +1,112 @@
+/* ==========================================================================
+   PÁGINAS: Sucesso e Confirmação de Pagamento
+   Documentação: Estilos específicos para páginas de sucesso de inscrição
+   e confirmação de pagamento.
+   ========================================================================== */
+
+/* --- 1. Container e Seções --- */
+.success-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* --- 2. Ícone de Sucesso --- */
+.success-icon-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+
+.success-icon-circle svg {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+    stroke-width: 3;
+}
+
+/* --- 3. Títulos e Subtítulos --- */
+.success-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.success-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.success-description {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+/* --- 4. Botões de Ação --- */
+.action-buttons {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.action-buttons a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-receipt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-receipt svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- 5. Responsividade --- */
+@media (max-width: 992px) {
+    .success-section {
+        padding: 3rem 0;
+    }
+
+    .success-title {
+        font-size: 2rem;
+    }
+
+    .success-subtitle {
+        font-size: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .action-buttons a {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
