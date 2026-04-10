@@ -1,0 +1,100 @@
+/* ============================================================
+ * 6. GALERIA DE MÍDIA E FEEDBACKS
+ * ============================================================ */
+.media-gallery {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--color-background-alt);
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+}
+
+.event-feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-feedback-card {
+    background-color: var(--color-background-alt);
+    border-left: 5px solid var(--color-accent);
+    padding: 2rem;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.event-feedback-card .quote {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.event-feedback-card .author {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* ============================================================
+ * 8. ESTADO DE ESPERA (Próximos Eventos / Save the Date)
+ * ============================================================ */
+.upcoming-event-container {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+.save-the-date-card {
+    background: var(--color-base);
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.save-the-date-card h3 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.save-the-date-card p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.save-the-date-description {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+}
+
+.save-the-date-button {
+    margin-top: 1rem;
+}
+
+/* ============================================================
+ * 9. RESPONSIVIDADE (Mobile & Tablets)
+ * ============================================================ */
+@media (max-width: 992px) {
+    .event-hero h1 {
+        font-size: 2rem;
+    }
+
+    .event-hero .event-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .save-the-date-card {
+        padding: 2rem 1rem;
+    }
+
+    .save-the-date-card h3 {
+        font-size: 1.5rem;
+    }
+}
