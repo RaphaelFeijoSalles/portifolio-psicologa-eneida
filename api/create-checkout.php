@@ -45,7 +45,6 @@ try {
             error_log("Erro cURL Google Sheets: " . curl_error($ch));
         }
         
-        curl_close($ch);
     }
     // ==========================================
     // 4. GERAR LINK NA INFINITEPAY
@@ -81,7 +80,6 @@ try {
     
     $response = curl_exec($chIP);
     $httpCode = curl_getinfo($chIP, CURLINFO_HTTP_CODE);
-    curl_close($chIP);
 
     if ($httpCode >= 400) {
         http_response_code(500);

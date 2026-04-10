@@ -2,9 +2,10 @@
    Main CSS File - Orquestrador de Estilos
    ========================================================================== */
 
-/* 1. Base (Variáveis, Reset, Tipografia) */
+/* 1. Base (Variáveis, Reset, Tipografia, Utilidades) */
 @import url('base/variables.css');
 @import url('base/reset.css');
+@import url('base/utilities.css');
 
 /* 2. Layout (Estruturas globais, Header, Footer) */
 @import url('layout/header.css');
@@ -19,3 +20,4 @@
 /* 4. Páginas (Estilos específicos de escopo) */
 @import url('pages/home.css');
 @import url('pages/eventos.css');
+@import url('pages/success.css');

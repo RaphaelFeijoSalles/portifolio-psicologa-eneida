@@ -235,6 +235,7 @@
         transform: scale(1);
     }
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -245,9 +246,202 @@
     }
 }
 
-/* --- 7. Responsividade --- */
+/* --- 7. Formulário Nativo (Checkout) --- */
+.native-form {
+    width: 100%;
+}
+
+.form-container {
+    background: var(--color-base);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-align: left;
+}
+
+.form-section-info {
+    margin-top: 2rem;
+    background: var(--color-background-alt);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-description {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+.form-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.custom-radio {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.radio-label {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    cursor: pointer;
+}
+
+.checkout-actions {
+    margin-top: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.investment-value {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.payment-info-box {
+    background-color: #fdfaf3;
+    border: 1px solid #e0d5b1;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.payment-info-box p {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.payment-info-box ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.payment-info-box li {
+    margin-bottom: 5px;
+}
+
+/* --- 8. Spinner de Carregamento --- */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-accent);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+}
+
+.checkout-loading {
+    display: none;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.checkout-loading h3 {
+    color: var(--color-primary);
+}
+
+.checkout-loading p {
+    color: var(--color-text-light);
+}
+
+/* --- 9. Responsividade --- */
 @media (max-width: 992px) {
     .investment-options {
         grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        padding: 2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .form-section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* --- 10. Mobile (Responsividade Extra) --- */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 1.5rem;
+        border-radius: 4px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 16px;
+        /* Evita zoom em iOS */
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+
+    .form-section-info {
+        padding: 1rem;
+    }
+
+    .payment-info-box {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+
+    .checkout-actions {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+
+    .investment-value {
+        font-size: 1rem;
     }
 }
