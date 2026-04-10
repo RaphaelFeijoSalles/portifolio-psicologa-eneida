@@ -1,6 +1,5 @@
 import { loadComponent } from './utils/componentLoader.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
-import { initClipboardHandler } from './utils/clipboard.js';
 import { BannerController } from './modules/BannerController.js';
 import { FooterController } from './modules/FooterController.js';
 import { EventPageController } from './modules/EventPageController.js';
@@ -47,6 +46,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     EventListController.init();
 
-    // 4. Utilitários das páginas internas
-    initClipboardHandler();
 });

@@ -15,15 +15,15 @@
     font-weight: 500;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
     color: var(--color-base);
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* --- 2. Botões Secundários (Ghost Buttons) --- */
@@ -41,8 +41,8 @@
 .btn-secondary:hover {
     background-color: var(--color-secondary);
     color: var(--color-base);
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* --- 3. Botão de CTA do Menu de Navegação --- */
@@ -53,18 +53,19 @@
     border-radius: 50px;
     font-weight: 500;
     margin-left: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link.cta-button:hover {
     background-color: var(--color-secondary);
     color: var(--color-base);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.nav-link.cta-button::after { 
-    display: none; /* Remove o sublinhado animado padrão do menu */
+.nav-link.cta-button::after {
+    display: none;
+    /* Remove o sublinhado animado padrão do menu */
 }
 
 /* --- 4. Botões de Contato (Rodapé e Eventos) --- */
@@ -116,66 +117,33 @@
 
 
 .btn-whatsapp-event {
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px;
-    background-color: #25D366; 
-    border-color: #25D366; 
-    color: var(--color-base);
-    padding: 1rem 2.5rem; 
-    font-size: 1.1rem; 
-    font-weight: 700; 
-    margin-top: 1.5rem;
-    width: auto; 
-    max-width: 100%; 
-    white-space: nowrap; 
-}
-
-.btn-whatsapp-event:hover { 
-    background-color: #1EAE54; 
-    border-color: #1EAE54; 
-}
-
-/* --- 5. Botões Apenas com Ícone (Copiar PIX / Endereço) --- */
-.btn-copy-icon-only {
-    background-color: transparent; 
-    border: 1px solid var(--color-primary); 
-    color: var(--color-primary);
-    border-radius: 4px; 
-    padding: 6px; 
-    cursor: pointer; 
-    display: inline-flex; 
-    align-items: center; 
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    transition: all 0.2s ease-in-out; 
-    min-height: 32px; 
-    min-width: 32px; 
-    line-height: 0;
+    gap: 10px;
+    background-color: #25D366;
+    border-color: #25D366;
+    color: var(--color-base);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    width: auto;
+    max-width: 100%;
+    white-space: nowrap;
 }
 
-.btn-copy-icon-only svg { 
-    fill: none !important; 
-    stroke: currentColor; 
-    stroke-width: 2; 
-}
-
-.btn-copy-icon-only:hover { 
-    background-color: rgba(var(--color-primary-rgb), 0.1); 
-    transform: scale(1.05); 
-}
-
-.btn-copy-icon-only.copied { 
-    border-color: #28a745; 
-    color: #28a745; 
+.btn-whatsapp-event:hover {
+    background-color: #1EAE54;
+    border-color: #1EAE54;
 }
 
 /* --- 6. Utilitários (Ícones dentro de botões e Espaçamentos) --- */
-.icon-btn-large { 
-    width: 24px; 
-    height: 24px; 
-    object-fit: contain; 
-    margin-right: 8px; 
+.icon-btn-large {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-right: 8px;
 }
 
 /* Força o alinhamento centralizado quando um botão mistura SVG e Texto */
@@ -194,19 +162,19 @@
 /* --- 7. Responsividade --- */
 @media (max-width: 992px) {
     .nav-link.cta-button {
-        margin-left: auto; 
-        margin-right: auto; 
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 1rem;
-        width: 80%; 
-        max-width: 300px; 
-        font-size: 1.2rem; 
+        width: 80%;
+        max-width: 300px;
+        font-size: 1.2rem;
         padding: 12px 20px;
     }
-    
-    .btn-whatsapp-event { 
-        width: 100%; 
-        padding: 1rem 1.5rem; 
-        font-size: 1rem; 
-        white-space: normal; 
+
+    .btn-whatsapp-event {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        white-space: normal;
     }
 }

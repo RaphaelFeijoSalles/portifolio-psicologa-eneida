@@ -1,10 +1,308 @@
-.event-page-header {
-    text-align: center;
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: 2rem;
+/* ============================================================
+ * 1. HERO SECTION (Cabeçalho do Evento)
+ * ============================================================ */
+.event-hero {
+    padding: 4rem 0;
     margin-bottom: 3rem;
+    background-color: var(--color-primary);
+    background-image: linear-gradient(rgba(11, 44, 74, 0.8), rgba(11, 44, 74, 0.8));
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--color-base);
 }
 
+.event-hero h1 {
+    color: var(--color-base);
+    font-size: 3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.event-hero .event-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.event-hero .event-date {
+    font-size: 1.2rem;
+    color: var(--color-base);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.event-hero .event-description {
+    max-width: 740px;
+    margin: 1.75rem auto 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+ * 2. ESTRUTURA GERAL DE DETALHES (Grid Principal)
+ * ============================================================ */
+.event-details-section {
+    padding: 5rem 0;
+}
+
+.event-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.section-title-alt {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--color-accent);
+    display: inline-block;
+}
+
+/* ============================================================
+ * 3. COLUNA 1: CRONOGRAMA (Estilo Timeline)
+ * ============================================================ */
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 11px;
+    height: 100%;
+    width: 2px;
+    background-color: var(--color-accent);
+    opacity: 0.3;
+}
+
+.timeline-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-list li::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--color-background-alt);
+}
+
+.timeline-list .time {
+    font-weight: 700;
+    color: var(--color-primary);
+    min-width: 70px;
+    margin-left: 2rem;
+    font-size: 1.05rem;
+}
+
+.timeline-list .timeline-content {
+    color: var(--color-text-dark);
+    line-height: 1.4;
+    padding-top: 2px;
+}
+
+.timeline-list .timeline-content span {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* ============================================================
+ * 4. COLUNA 2: CONDUTORAS (Cards de Perfil)
+ * ============================================================ */
+.prof-card {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.prof-img {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-background-alt);
+    box-shadow: var(--box-shadow);
+}
+
+.prof-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prof-details h4 {
+    margin: 0 0 0.25rem 0;
+    color: var(--color-primary);
+    font-size: 1.15rem;
+}
+
+.prof-details p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+/* ============================================================
+ * 5. COLUNA 3: INFORMAÇÕES GERAIS E MAPA RURAL
+ * ============================================================ */
+.event-info-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.event-info-item {
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--color-accent);
+    transition: transform 0.2s ease;
+}
+
+.event-info-item:hover {
+    transform: translateY(-2px);
+}
+
+.event-info-item h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+.event-info-item h3 svg {
+    color: var(--color-accent);
+}
+
+.event-info-item p {
+    margin: 0;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+/* Foco Rural: Design específico para mapas sem endereço de texto */
+.map-rural-focus {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.map-rural-focus #mapa-evento {
+    width: 100%;
+    height: 250px;
+    border: none;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* =========================================
+   REFINAMENTO: BANNER DO MAPA (PC)
+   ========================================= */
+.rural-location-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-primary);
+    padding: 1.5rem 2rem; /* Mais padding para tirar a sensação de sufoco */
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    gap: 2rem; /* Espaço generoso entre o texto e o botão no PC */
+}
+
+.rural-info {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-base);
+}
+
+.rural-info strong {
+    font-size: 1.2rem; /* Nome do local levemente maior */
+    display: block;
+    margin-bottom: 4px;
+}
+
+.rural-info span {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+}
+
+.btn-acao-mapa.destaque {
+    padding: 0.8rem 1.5rem; /* Botão mais robusto e clicável */
+    gap: 0.75rem; /* Mais espaço entre o aviãozinho e o texto */
+    white-space: nowrap; /* Garante que o texto não quebre dentro do botão */
+}
+
+.btn-acao-mapa.destaque:hover {
+    background-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   REFINAMENTO: O QUE LEVAR (MODULAR)
+   ========================================= */
+.info-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: grid;
+    gap: 1rem; /* Espaço entre cada item da lista */
+}
+
+.info-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Bullet customizado (Substituindo o símbolo de menos) */
+.check-icon {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    margin-top: 8px; /* Alinha com a primeira linha do texto */
+    flex-shrink: 0;
+}
+
+.info-checklist p {
+    margin: 0 !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+}
+
+.info-checklist p strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ============================================================
+ * 6. GALERIA DE MÍDIA E FEEDBACKS
+ * ============================================================ */
 .media-gallery {
     text-align: center;
     padding: 3rem;
@@ -39,122 +337,9 @@
     color: var(--color-primary);
 }
 
-.event-hero {
-    padding: 4rem 0;
-    background-color: var(--color-primary);
-    background-image: linear-gradient(rgba(11, 44, 74, 0.8), rgba(11, 44, 74, 0.8));
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: var(--color-base);
-}
-
-.event-hero h1 {
-    color: var(--color-base);
-    font-size: 3rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.event-hero .event-subtitle {
-    font-size: 1.5rem;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-    font-weight: 400;
-}
-
-.event-hero .event-date {
-    font-size: 1.2rem;
-    color: var(--color-base);
-    font-weight: 500;
-    margin-bottom: 0;
-}
-
-.event-details-section {
-    padding: 4rem 0;
-}
-
-.event-layout-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-}
-
-.section-title-alt {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-accent);
-}
-
-.event-cronograma ul,
-.event-info ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.event-cronograma li,
-.event-info li {
-    font-size: 1rem;
-    color: var(--color-text-light);
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.event-cronograma li strong {
-    color: var(--color-text-dark);
-    font-size: 1.1rem;
-}
-
-.event-cronograma li em {
-    font-size: 0.9rem;
-    color: var(--color-secondary);
-}
-
-.event-info li {
-    border-bottom: none;
-    padding: 0.5rem 0;
-    line-height: 1.5;
-}
-
-/* Container do mapa e informações */
-.map-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Estilização do Iframe */
-#mapa-evento {
-    width: 100%;
-    height: 300px;
-    /* Altura ideal para o grid lateral no PC */
-    border: 1px solid var(--color-accent);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-/* Container do endereço e botão */
-.endereco-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--color-background-alt);
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--color-primary);
-}
-
-.endereco-detalhes {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: var(--color-primary);
-    font-weight: 500;
-}
-
+/* ============================================================
+ * 7. FLUXO DE COMPRA E PAGAMENTO (Passos e Stripe)
+ * ============================================================ */
 .passos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -277,50 +462,9 @@
     display: block;
 }
 
-@media (max-width: 992px) {
-    .event-hero h1 {
-        font-size: 2rem;
-    }
-
-    .event-hero .event-subtitle {
-        font-size: 1rem;
-    }
-
-    .event-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .event-cronograma,
-    .event-profissionais,
-    .event-info {
-        text-align: center;
-    }
-
-    #mapa-evento {
-        height: 250px;
-        /* Menor no celular para não ocupar a tela toda */
-    }
-
-    .endereco-container {
-        padding: 15px;
-    }
-
-    .event-cronograma li,
-    .event-info li {
-        text-align: center;
-    }
-
-    .passos-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* * ============================================================
- * SEÇÃO: PRÓXIMOS EVENTOS (PLACEHOLDER / SAVE THE DATE)
- * Estilização para o estado de espera quando não há eventos ativos.
+/* ============================================================
+ * 8. ESTADO DE ESPERA (Próximos Eventos / Save the Date)
  * ============================================================ */
-
 .upcoming-event-container {
     display: flex;
     justify-content: center;
@@ -357,6 +501,55 @@
 
 .save-the-date-button {
     margin-top: 1rem;
+}
+
+/* ============================================================
+ * 9. RESPONSIVIDADE (Mobile & Tablets)
+ * ============================================================ */
+@media (max-width: 992px) {
+    .event-hero h1 {
+        font-size: 2rem;
+    }
+
+    .event-hero .event-subtitle {
+        font-size: 1rem;
+    }
+
+    .event-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    /* Centraliza os títulos no mobile */
+    .event-cronograma .section-title-alt,
+    .event-profissionais .section-title-alt,
+    .event-info .section-title-alt {
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Ajuste para o banner do mapa rural no celular */
+    .rural-location-banner {
+        padding: 1.25rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+    }
+
+    .rural-info strong {
+        font-size: 1.1rem;
+    }
+
+    .btn-acao-mapa.destaque {
+        width: 100%; /* Botão ocupa a largura total no celular */
+        justify-content: center;
+    }
+
+    .passos-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
