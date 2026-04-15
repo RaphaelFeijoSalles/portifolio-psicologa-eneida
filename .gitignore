@@ -1,3 +1,5 @@
 .idea
 
 assets/images/eventos/**/*.mp4
+
+.env

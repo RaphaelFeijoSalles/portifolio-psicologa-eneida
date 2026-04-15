@@ -2,6 +2,16 @@
 // Define que a resposta será em formato JSON
 header('Content-Type: application/json');
 
+// Carrega o leitor do .env e busca o arquivo na raiz do projeto (../)
+require_once __DIR__ . '/env_loader.php';
+try {
+    loadEnv(__DIR__ . '/../.env');
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Erro de configuração do servidor.']);
+    exit;
+}
+
 // Segurança: Bloqueia qualquer método que não seja POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -22,8 +32,8 @@ try {
     // 3. SALVAR NO GOOGLE SHEETS
     // ==========================================
 
-    // COLE A URL DO SEU WEBHOOK DO GOOGLE AQUI:
-    $googleWebhook = "URL_DO_GOOGLE";
+    // Puxa a URL do Google do arquivo .env
+    $googleWebhook = $_ENV['GOOGLE_WEBHOOK_URL'] ?? '';
 
     // Verifica apenas se a URL não está vazia e se pertence ao Google
     if (!empty($googleWebhook) && strpos($googleWebhook, 'script.google.com') !== false) {

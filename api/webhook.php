@@ -1,4 +1,15 @@
 <?php
+// Carrega o leitor do .env e busca o arquivo na raiz do projeto (../)
+require_once __DIR__ . '/env_loader.php'; 
+
+try {
+    loadEnv(__DIR__ . '/../.env');
+} catch (Exception $e) {
+    http_response_code(500);
+    echo "Erro de configuração do servidor.";
+    exit;
+}
+
 // Recebe a notificação da InfinitePay
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
@@ -13,8 +24,14 @@ if (isset($data['order_nsu']) && isset($data['paid_amount'])) {
         "status" => "PAGO (" . $data['capture_method'] . ")"
     ]);
 
-    // URL do Google Script aqui!
-    $googleWebhook = "URL_DO_GOOGLE_AQUI"; 
+    // Puxa a URL do Google do arquivo .env
+    $googleWebhook = $_ENV['GOOGLE_WEBHOOK_URL'] ?? ''; 
+
+    if (empty($googleWebhook)) {
+        http_response_code(500);
+        echo "Erro interno: URL do Webhook não configurada.";
+        exit;
+    }
 
     $ch = curl_init($googleWebhook);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

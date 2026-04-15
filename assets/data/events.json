@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tardedeimersao1",
+    "path": "/pages/tardedeimersao1/",
+    "title": "1ª Tarde de Imersão",
+    "subtitle": "Um mergulho dentro de si",
+    "date": "Outubro de 2025",
+    "status": "past"
+  },
+  {
+    "id": "tardedeimersao2",
+    "path": "/pages/tardedeimersao2/",
+    "title": "2ª Tarde de Imersão",
+    "subtitle": "Somos Água",
+    "date": "Dezembro de 2025",
+    "status": "past"
+  },
+  {
+    "id": "tardedeimersao3",
+    "path": "/pages/tardedeimersao3/",
+    "title": "3ª Tarde de Imersão",
+    "subtitle": "O Despertar da Consciência",
+    "date": "Março de 2026",
+    "status": "current"
+  }
+]
