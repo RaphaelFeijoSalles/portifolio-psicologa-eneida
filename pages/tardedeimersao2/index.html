@@ -8,6 +8,12 @@
 
     <link rel="icon" type="image/png" href="../../assets/images/ui/logo.png">
     <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components/gallery.css">
+    <!-- LightGallery CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-video.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -33,11 +39,12 @@
         <section class="event-page-container">
             <div class="container">
                 <div class="media-gallery">
-                    <h3>Galeria de Fotos</h3>
-                    <p>Confira os registros especiais deste dia.</p>
-                    <br>
-                    <a href="https://drive.google.com/drive/folders/14CSBIChFotQYvuFVxUjVsNJQ8Dfn2YS-" target="_blank"
-                        class="btn-primary">Acessar Fotos no Google Drive</a>
+                    <h3>Galeria de Fotos e Vídeos</h3>
+                    <p>Confira os registros especiais deste dia. Clique para ampliar.</p>
+                    <div id="light-gallery" data-event-name="tardedeimersao2" style="cursor: pointer;">
+                        <!-- A galeria será inserida aqui via JavaScript -->
+                    </div>
+                    <p id="gallery-message"></p>
                 </div>
 
                 <section class="event-feedback-section">
@@ -61,6 +68,12 @@
 
     <footer class="main-footer" id="app-footer"></footer>
     <script type="module" src="/assets/js/main.js"></script>
+
+    <!-- LightGallery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/video/lg-video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <script src="../../assets/js/pages/event-gallery.js"></script>
 </body>
 
 </html>

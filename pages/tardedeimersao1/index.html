@@ -7,6 +7,12 @@
     <title>1ª Tarde de Imersão - Eneida Feijó</title>
     <link rel="icon" type="image/png" href="../../assets/images/ui/logo.png">
     <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components/gallery.css">
+    <!-- LightGallery CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-video.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -31,10 +37,11 @@
         <div class="container">
             <div class="media-gallery">
                 <h3>Mídia do Evento</h3>
-                <p>Veja as fotos e vídeos deste encontro especial.</p>
-                <br>
-                <a href="https://drive.google.com/drive/folders/1_OSgmyqipjj1Toj2ClxFRazZaQok8Xmn?usp=sharing"
-                    target="_blank" class="btn-primary">Acessar Galeria (Google Drive)</a>
+                <p>Veja as fotos e vídeos deste encontro especial. Clique para ampliar.</p>
+                <div id="light-gallery" data-event-name="tardedeimersao1" style="cursor: pointer;">
+                    <!-- A galeria é inserida aqui via JavaScript -->
+                </div>
+                 <p id="gallery-message"></p>
             </div>
 
             <section class="event-feedback-section">
@@ -63,6 +70,13 @@
 
 <footer class="main-footer" id="app-footer"></footer>
 <script type="module" src="/assets/js/main.js"></script>
+
+<!-- LightGallery JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/video/lg-video.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="../../assets/js/pages/event-gallery.js"></script>
+
 </body>
 
 </html>
