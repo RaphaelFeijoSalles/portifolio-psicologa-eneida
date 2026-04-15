@@ -29,25 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const dynamicEls = mediaItems.map(item => {
                 const subHtml = item.type === 'video' ? '<h4>Vídeo do evento</h4>' : '<h4>Foto do evento</h4>';
-                
+
                 if (item.type === 'video') {
-                    // Correct structure for video items
                     return {
-                        video: {
+                        video: JSON.stringify({
                             source: [{
                                 src: item.url,
-                                type: 'video/mp4' // Assuming mp4, adjust if other types are used
+                                type: 'video/mp4'
                             }],
                             attributes: {
                                 preload: false,
-                                controls: true
+                                controls: true,
+                                playsinline: true // Boa prática para iOS
                             }
-                        },
+                        }),
                         thumb: item.thumbnail,
                         subHtml: subHtml
                     };
                 }
-                
                 // Structure for image items remains the same
                 return {
                     src: item.url,
@@ -66,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 escKey: true,
                 keyPress: true, // Enables keyboard navigation (arrows)
                 controls: true, // Shows next/prev arrows
+                mousewheel: true, // Enable mousewheel navigation
                 download: false,
                 counter: true,
             });

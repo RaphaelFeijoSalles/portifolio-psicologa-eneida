@@ -1,3 +1,4 @@
+/* --- Base Grid Styles --- */
 #light-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -35,4 +36,53 @@
     font-size: 3rem;
     color: white;
     text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+/* --- Final Adjustments --- */
+
+/* 1. Fix video seeking by disabling pointer events on the overlay */
+.lg-media-overlap {
+    pointer-events: none !important;
+}
+
+/* 2. Change subtitle color to a soft gold */
+.lg-sub-html, .lg-sub-html h4 {
+    color: #D4AF37 !important; /* Soft Gold */
+    font-size: 1rem;
+}
+
+/* 3. Change active thumbnail border color */
+.lg-thumb-item.active, .lg-thumb-item:hover {
+    border-color: #D4AF37 !important; /* Soft Gold */
+}
+
+/* Garante que o container do vídeo fique acima da interface padrão da galeria */
+.lg-video-cont {
+    z-index: 1050 !important;
+}
+
+/* Força os cliques a passarem para o player (HTML5 ou Iframe) */
+.lg-video-cont video,
+.lg-video-cont iframe,
+.lg-video-object {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1060 !important;
+}
+
+/* Evita que a área invisível do botão de play grande intercepte cliques na timeline inferior */
+.lg-video-play {
+    pointer-events: none !important;
+}
+
+/* 4. Improve mobile responsiveness for the grid */
+@media (max-width: 600px) {
+    #light-gallery {
+        /* On mobile, create a 2-column grid */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    #light-gallery a {
+        height: 120px; /* Adjust height for smaller thumbnails */
+    }
 }
