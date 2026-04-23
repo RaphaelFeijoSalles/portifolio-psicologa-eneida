@@ -40,6 +40,21 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 - `/pages/` — `tardedeimersao3/index.html`, `sucesso/index.html`, entre outras páginas de eventos
 - `/api/` — backend PHP para criação de checkout e webhook
 
+## Configuração de Toggles
+
+O site usa toggles booleanos para controlar elementos como banner e placeholder de eventos. Edite `assets/js/config.js` para alterar:
+
+- `enableBanner`: true/false para exibir banner na homepage.
+- `enableEventsPlaceholder`: true/false para mostrar placeholder em "Próximos Eventos".
+
+Exemplo:
+```javascript
+export const config = {
+    enableBanner: false,
+    enableEventsPlaceholder: true,
+};
+```
+
 ## 💻 Como Executar Localmente
 
 Por usar módulos ES6 e carregamento assíncrono de componentes, o projeto deve ser executado em servidor local.

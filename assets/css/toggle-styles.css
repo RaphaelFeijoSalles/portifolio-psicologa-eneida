@@ -1,0 +1,45 @@
+/* Estilos modulares para toggles, reutilizando variáveis do styles.css (ex.: --primary-color) */
+
+.save-the-date-card {
+    background: var(--bg-alt, #f9f9f9);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.save-the-date-card h3 {
+    color: var(--primary-color, #333);
+    margin-bottom: 1rem;
+}
+
+.save-the-date-card p {
+    color: var(--text-color, #666);
+    line-height: 1.6;
+}
+
+.save-the-date-card .btn-primary {
+    display: inline-block;
+    background: var(--primary-color, #007bff);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.save-the-date-card .btn-primary:hover {
+    background: var(--primary-hover, #0056b3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .save-the-date-card {
+        padding: 1.5rem;
+    }
+    .save-the-date-card p {
+        font-size: 1rem;
+    }
+}

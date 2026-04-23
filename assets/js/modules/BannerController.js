@@ -1,5 +1,6 @@
 export class BannerController {
-    constructor() {
+    constructor(enableBanner = true) {  // Novo parâmetro opcional
+        this.enableBanner = enableBanner;
         this.banner = document.getElementById("event-banner");
         this.closeBtn = document.getElementById("close-banner");
         this.bannerLink = this.banner ? this.banner.querySelector("a") : null;
@@ -10,6 +11,7 @@ export class BannerController {
     }
 
     init() {
+        if (!this.enableBanner) return;  // Respeita toggle
         if (!this.banner) return;
 
         // Verifica se o banner foi explicitamente fechado nesta sessão
