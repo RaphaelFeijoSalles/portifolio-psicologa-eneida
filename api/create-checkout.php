@@ -20,16 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 try {
-    // 1. Recebe os dados do formulário Front-end
+    // 1. Carrega o evento ativo (fonte única de verdade)
+    $eventFile = __DIR__ . '/../assets/data/activeEvent.json';
+    if (!file_exists($eventFile)) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Configuração do evento não encontrada']);
+        exit;
+    }
+    
+    $activeEvent = json_decode(file_get_contents($eventFile), true);
+    
+    if (!$activeEvent || !$activeEvent['isActive']) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Evento não está ativo no momento. Tente novamente em breve.']);
+        exit;
+    }
+
+    // 2. Recebe os dados do formulário Front-end
     $inputJSON = file_get_contents('php://input');
     $customerData = json_decode($inputJSON, true);
 
-    // 2. Gera um ID Único para essa compra e anexa aos dados
+    // 3. Gera um ID Único para essa compra e anexa aos dados
     $nsu = "imersao-" . time();
     $customerData['order_nsu'] = $nsu;
+    $customerData['event_id'] = $activeEvent['id'];
 
     // ==========================================
-    // 3. SALVAR NO GOOGLE SHEETS
+    // 4. SALVAR NO GOOGLE SHEETS
     // ==========================================
 
     // Puxa a URL do Google do arquivo .env
@@ -57,11 +74,15 @@ try {
         
     }
     // ==========================================
-    // 4. GERAR LINK NA INFINITEPAY
+    // 5. GERAR LINK NA INFINITEPAY
     // ==========================================
     // Limpa o telefone e adiciona o +55 obrigatório da InfinitePay
     $telefoneLimpo = preg_replace('/\D/', '', $customerData['whatsapp']);
     $telefoneFormatado = "+55" . $telefoneLimpo;
+
+    // Usa dados dinâmicos do evento ativo
+    $eventTitle = $activeEvent['eventPage']['fullTitle'];
+    $eventPrice = $activeEvent['eventPage']['price'];
 
     $payload = [
         "handle" => "raphael-feijo",
@@ -71,9 +92,9 @@ try {
         "webhook_url" => "https://" . $_SERVER['HTTP_HOST'] . "/api/webhook.php",
         "items" => [
             [
-                "description" => "3ª Tarde de Imersão: A cura que vem da terra",
+                "description" => $eventTitle,
                 "quantity" => 1,
-                "price" => 24000
+                "price" => $eventPrice
             ]
         ],
         "customer" => [

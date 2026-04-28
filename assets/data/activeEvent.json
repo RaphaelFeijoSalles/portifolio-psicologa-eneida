@@ -1,0 +1,39 @@
+{
+  "isActive": true,
+  "id": "tardedeimersao1",
+  "banner": {
+    "date": "18/04",
+    "title": "3º Tarde de Imersão",
+    "cta": "Reserve esse tempo pra você!"
+  },
+  "upcomingSection": {
+    "title": "3º Tarde de Imersão",
+    "subtitle": "Uma experiência transformadora",
+    "description": "Mergulhe em uma jornada de autoconhecimento e desenvolvimento pessoal.",
+    "date": "18 de abril de 2026",
+    "time": "14h às 18h",
+    "location": "São Paulo, SP"
+  },
+  "eventPage": {
+    "fullTitle": "3ª Tarde de Imersão: Autoconhecimento e Transformação",
+    "subtitle": "Uma experiência transformadora",
+    "date": "18 de abril de 2026",
+    "time": "14h às 18h",
+    "location": "São Paulo, SP",
+    "address": "Rua Exemplo, 123",
+    "link_maps": "https://maps.google.com/maps?q=Rua+Exemplo,+123",
+    "description": "Descrição completa do evento. Uma jornada única de descoberta e transformação pessoal através de técnicas de imersão.",
+    "price": 24000,
+    "currency": "BRL",
+    "highlights": [
+      "Autoconhecimento",
+      "Desenvolvimento pessoal",
+      "Networking com profissionais"
+    ]
+  },
+  "paths": {
+    "imageFolder": "./assets/images/eventos/tardedeimersao1/",
+    "banner": "./assets/images/eventos/tardedeimersao1/banner.jpg",
+    "gallery": "./assets/images/eventos/tardedeimersao1/"
+  }
+}
