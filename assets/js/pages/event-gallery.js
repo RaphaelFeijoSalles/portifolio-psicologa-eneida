@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const messageElement = document.getElementById('gallery-message');
 
-    fetch(`/api/get_images.php?event=${eventName}`)
+    fetch(`../../api/get_images.php?event=${eventName}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Request failed with status ${response.status}`);

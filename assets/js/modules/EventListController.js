@@ -3,11 +3,16 @@
  * Gerencia a exibição da seção de Próximos Eventos.
  * Permite alternar entre o conteúdo do evento ativo e o placeholder de "Save the Date".
  */
-export const EventListController = (() => {
-    // FEATURE FLAG: Altere para 'true' para mostrar o evento ou 'false' para o placeholder
-    const isEventActive = true;
+export class EventListController {
+    static init(toggleController) {  // Novo parâmetro
+        const upcomingEventsContainer = document.querySelector('.upcoming-event-container');
+        if (!upcomingEventsContainer) return;
 
-    const renderPlaceholder = () => {
+        // Renderiza eventos (placeholder ou lista) baseado no toggle
+        this.renderEvents(toggleController);
+    }
+
+    static renderPlaceholder() {
         return `
             <div class="save-the-date-card">
                 <h3>Próximas Imersões</h3>
@@ -21,17 +26,21 @@ export const EventListController = (() => {
                 </a>
             </div>
         `;
-    };
+    }
 
-    const init = () => {
-        const upcomingEventsContainer = document.querySelector('.upcoming-event-container');
-        if (!upcomingEventsContainer) return;
+    static renderEvents(toggleController) {
+        const container = document.querySelector('.upcoming-event-container');
+        if (!container) return;
 
-        // Se o evento não estiver ativo, injeta o placeholder
-        if (!isEventActive) {
-            upcomingEventsContainer.innerHTML = renderPlaceholder();
+        // Limpa conteúdo existente
+        container.innerHTML = '';
+
+        // Se toggle permitir, mostra placeholder
+        if (toggleController.isEventsPlaceholderEnabled()) {
+            container.innerHTML = this.renderPlaceholder();
+        } else {
+            // Futuro: renderizar lista real de eventos se disponível
+            container.innerHTML = '<p>Nenhum evento disponível no momento.</p>';
         }
-    };
-
-    return { init };
-})();
+    }
+}
