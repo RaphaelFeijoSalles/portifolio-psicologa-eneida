@@ -83,7 +83,7 @@ try {
         ]
     ];
 
-    $chIP = curl_init('https://api.infinitepay.io/invoices/public/checkout/links');
+    $chIP = curl_init('https://api.checkout.infinitepay.io/links');
     curl_setopt($chIP, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($chIP, CURLOPT_POSTFIELDS, json_encode($payload));
     curl_setopt($chIP, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
