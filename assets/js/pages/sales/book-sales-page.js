@@ -20,7 +20,7 @@ const BOOK_LAUNCH_LOCATION = `${BOOK_LAUNCH.venue} (${BOOK_LAUNCH.address})`;
 
 const unavailableBook = {
     title: 'Memórias de uma psicóloga em um relacionamento abusivo',
-    description: 'O livro de Eneida Feijó para ler, refletir e acolher a própria história.',
+    description: 'Um relato real sobre silêncios, dores e superação. Para todas as mulheres que esqueceram de si para sobreviver. Um convite ao autoconhecimento, à cura e à liberdade..',
     available: false,
     priceLabel: null,
 };
@@ -208,7 +208,7 @@ function renderBookSalesPage(product) {
                         autocomplete: 'postal-code',
                         inputMode: 'numeric',
                         maxLength: 9,
-                        pattern: '\\d{5}-?\\d{3}',
+                        pattern: String.raw`\d{5}-?\d{3}`,
                         placeholder: '00000-000',
                         hint: 'Digite o CEP para preencher o endereço automaticamente.',
                         statusKey: 'cep',
@@ -329,5 +329,5 @@ async function initBookSalesPage() {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initBookSalesPage, { once: true });
 } else {
-    initBookSalesPage();
+    await initBookSalesPage();
 }
