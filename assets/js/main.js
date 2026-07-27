@@ -1,9 +1,10 @@
 import { loadComponent } from './utils/componentLoader.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
 import { BannerController } from './modules/BannerController.js';
+import { getActiveHomepageBanner } from './modules/BannerRegistry.js';
 import { FooterController } from './modules/FooterController.js';
 import { EventListController } from './modules/EventListController.js';
-import { ToggleController } from './modules/ToggleController.js';  // Novo import
+import { ToggleController } from './modules/ToggleController.js';
 
 
 //Calcula a raiz do site baseada no próprio arquivo JS
@@ -30,10 +31,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponent('app-header', `${PROJECT_ROOT}components/header.html`, PROJECT_ROOT);
     await loadComponent('app-footer', `${PROJECT_ROOT}components/footer.html`, PROJECT_ROOT);
 
-    // 2. Injeta o Banner APENAS na homepage E se toggle permitir
-    if (isMainPage() && toggleController.isBannerEnabled()) {
-        await loadComponent('app-banner', `${PROJECT_ROOT}components/banner.html`, PROJECT_ROOT);
-        const bannerController = new BannerController();
+    // 2. Resolve a campanha ativa da homepage a partir dos toggles.
+    const activeBanner = isMainPage() ? getActiveHomepageBanner(toggleController) : null;
+    if (activeBanner) {
+        await loadComponent('app-banner', `${PROJECT_ROOT}${activeBanner.componentPath}`, PROJECT_ROOT);
+        const bannerController = new BannerController('#app-banner');
         bannerController.init();
     }
 

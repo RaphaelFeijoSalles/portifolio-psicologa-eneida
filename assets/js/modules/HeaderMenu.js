@@ -8,7 +8,7 @@ export class HeaderMenu {
         this.navMenu = document.getElementById("nav-menu");
         this.navLinks = document.querySelectorAll(".nav-link");
         this.header = document.getElementById("app-header");
-        this.banner = document.getElementById("event-banner");
+        this.bannerHost = document.getElementById('app-banner');
         
         // Binds
         this.toggleMenu = this.toggleMenu.bind(this);
@@ -57,6 +57,11 @@ export class HeaderMenu {
         }
     }
 
+    getVisibleBannerHeight() {
+        const banner = this.bannerHost?.querySelector('[data-site-banner].visible:not(.hidden)');
+        return banner?.offsetHeight || 0;
+    }
+
     // Lógica para marcar o link do menu correspondente à seção atual
     handleScroll() {
         // Só executa se existirem seções na página (ex: home)
@@ -64,7 +69,7 @@ export class HeaderMenu {
         if (sections.length === 0) return;
 
         let fromTop = window.scrollY;
-        let bannerHeight = (this.banner && !this.banner.classList.contains("hidden")) ? this.banner.offsetHeight : 0;
+        let bannerHeight = this.getVisibleBannerHeight();
         let headerHeight = this.header ? this.header.offsetHeight : 70;
         let totalOffset = headerHeight + bannerHeight + 50; // Margem de segurança
 
@@ -102,7 +107,7 @@ export class HeaderMenu {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                let bannerHeight = (this.banner && !this.banner.classList.contains("hidden")) ? this.banner.offsetHeight : 0;
+                let bannerHeight = this.getVisibleBannerHeight();
                 let headerHeight = this.header ? this.header.offsetHeight : 70;
                 
                 const elementPosition = targetElement.offsetTop;

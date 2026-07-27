@@ -21,7 +21,15 @@ export class ToggleController {
      * @returns {boolean}
      */
     isBannerEnabled() {
-        return this.config?.enableBanner ?? true;  // Fallback true
+        return this.isEnabled('enableBanner');
+    }
+
+    /**
+     * Verifica se o banner do livro deve ser exibido.
+     * @returns {boolean}
+     */
+    isBookBannerEnabled() {
+        return this.isEnabled('enableBookBanner');
     }
 
     /**
@@ -39,6 +47,6 @@ export class ToggleController {
      * @returns {boolean}
      */
     isEnabled(key) {
-        return this.config?.[key] ?? false;
+        return Boolean(this.config?.[key]);
     }
 }

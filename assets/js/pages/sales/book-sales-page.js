@@ -2,6 +2,7 @@ import { SalesHero } from '../../components/sales/SalesHero.js';
 import { SalesBenefits } from '../../components/sales/SalesBenefits.js';
 import { SalesFAQ } from '../../components/sales/SalesFAQ.js';
 import { SalesHighlight } from '../../components/sales/SalesHighlight.js';
+import { SalesLocationMap } from '../../components/sales/SalesLocationMap.js';
 import { CheckoutFormBase } from '../../components/sales/CheckoutFormBase.js';
 import { CepAddressLookup } from '../../modules/CepAddressLookup.js';
 import { DeliveryMethodController } from '../../modules/DeliveryMethodController.js';
@@ -12,6 +13,8 @@ const BOOK_LAUNCH = {
     dateAndTime: '29/07 (quarta-feira), às 19h',
     venue: 'Biblioteca Municipal de Londrina',
     address: 'Av. Rio de Janeiro, 413 - Centro Londrina - PR',
+    mapUrl: 'https://www.google.com/maps?q=Biblioteca+Municipal+de+Londrina%2C+Av.+Rio+de+Janeiro%2C+413%2C+Centro%2C+Londrina+-+PR&output=embed',
+    directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Biblioteca%20Municipal%20de%20Londrina%2C%20Av.%20Rio%20de%20Janeiro%2C%20413%2C%20Centro%2C%20Londrina%20-%20PR',
 };
 const BOOK_LAUNCH_LOCATION = `${BOOK_LAUNCH.venue} (${BOOK_LAUNCH.address})`;
 
@@ -80,6 +83,18 @@ function renderBookSalesPage(product) {
         ],
         cta: { label: 'Garantir meu exemplar', href: '#book-checkout-section' },
         seal: 'Estreia',
+    }).render();
+
+    new SalesLocationMap('#sales-location', {
+        eyebrow: 'Evento de estreia',
+        title: 'Como chegar à estreia',
+        description: `Nos vemos em ${BOOK_LAUNCH.dateAndTime}.`,
+        mapTitle: `Mapa para ${BOOK_LAUNCH_LOCATION}`,
+        mapUrl: BOOK_LAUNCH.mapUrl,
+        venue: BOOK_LAUNCH.venue,
+        address: BOOK_LAUNCH.address,
+        directionsUrl: BOOK_LAUNCH.directionsUrl,
+        directionsLabel: 'Traçar rota',
     }).render();
 
     new SalesBenefits('#sales-benefits', {

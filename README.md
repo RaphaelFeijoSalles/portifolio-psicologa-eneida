@@ -8,11 +8,11 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 - Página de evento com formulário de inscrição nativo, validação em tempo real e integração com backend de pagamentos.
 - Página de venda de livro físico, com endereço de entrega, consulta automática de CEP e opções de presente/autógrafo.
 - Página de sucesso de inscrição com confirmação visual e botão de comprovante quando disponível.
-- Banner de evento na homepage que desaparece suavemente ao clicar em "Reserve esse tempo para você" e permanece oculto durante a sessão.
+- Banners de campanha na homepage, com toggle próprio, fechamento por sessão e navegação para cada oferta.
 
 ## 🧱 Arquitetura e Padrões
 
-- **HTML componentizado:** `header.html`, `footer.html` e `banner.html` são carregados dinamicamente via Fetch API para reduzir duplicação.
+- **HTML componentizado:** `header.html`, `footer.html` e os templates de banner são carregados dinamicamente via Fetch API para reduzir duplicação.
 - **CSS modular:** `assets/css/main.css` importa arquivos de layout, componentes, páginas e utilitários.
 - **JavaScript modular:** Componentes de venda reutilizáveis (`SalesHero`, `SalesBenefits`, `SalesFAQ` e `CheckoutFormBase`) e regras isoladas por responsabilidade.
 - **Sessão de estado leve:** `sessionStorage` é usado para gerenciar o estado do banner na homepage.
@@ -25,7 +25,7 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 - Formulário de livro com busca no ViaCEP, link para busca de CEP dos Correios e observações de presente/autógrafo
 - Checkout nativo via backend PHP (`/api/create-checkout.php`)
 - Página de confirmação com botão dinâmico de comprovante
-- Banner exclusivo da homepage que não reaparece após clique enquanto a aba estiver aberta
+- Banners de campanha na homepage que não reaparecem após fechamento enquanto a aba estiver aberta
 
 ## 📁 Estrutura de Diretórios
 
@@ -40,7 +40,7 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
   - `modules/` — controladores globais, consulta de CEP e preparação do pedido do livro
   - `pages/sales/` — composição da página de imersão e da página de livro
   - `utils/` — carregamento de componentes, clipboard, helpers
-- `/components/` — `header.html`, `footer.html`, `banner.html`
+- `/components/` — `header.html`, `footer.html` e templates de banner
 - `/pages/` — `tardedeimersao3/index.html`, `livro/index.html`, `sucesso/index.html`, entre outras páginas de eventos
 - `/api/` — backend PHP para catálogo de produtos, criação de checkout e webhook
 
@@ -48,13 +48,17 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 
 O site usa toggles booleanos para controlar elementos como banner e placeholder de eventos. Edite `assets/js/config.js` para alterar:
 
-- `enableBanner`: true/false para exibir banner na homepage.
+- `enableBanner`: true/false para exibir o banner de evento na homepage.
+- `enableBookBanner`: true/false para exibir o banner do livro na homepage.
 - `enableEventsPlaceholder`: true/false para mostrar placeholder em "Próximos Eventos".
+
+Quando mais de um banner estiver ativo, a campanha do livro tem prioridade para evitar avisos sobrepostos.
 
 Exemplo:
 ```javascript
 export const config = {
     enableBanner: false,
+    enableBookBanner: true,
     enableEventsPlaceholder: true,
 };
 ```
@@ -101,7 +105,7 @@ Em seguida, abra `http://localhost:5500` no navegador.
 
 ## 📝 Notas de Implementação
 
-- O banner aparece apenas na homepage e é removido ao clicar no link interno.
+- O banner ativo aparece apenas na homepage; cada campanha mantém seu próprio estado de fechamento na sessão.
 - O formulário do evento utiliza validação de email, máscara de telefone e regras simples de consistência.
 - O formulário do livro permite entrega com frete grátis em todo o Brasil ou resgate presencial na estreia; quando há entrega, envia o endereço estruturado e uma versão consolidada em `endereco_completo`. As opções selecionadas são incluídas em `observacao` no formato `[Presente, Autografado]`.
 - O design foi refatorado para remover todo CSS inline e consolidar estilos em arquivos CSS específicos.

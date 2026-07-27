@@ -1,10 +1,8 @@
-.event-banner {
+.site-banner {
     position: fixed;
     top: var(--header-height);
     left: 0;
     width: 100%;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
     padding: 10px 20px;
     text-align: center;
     z-index: 999;
@@ -14,15 +12,36 @@
     transform: translateY(-100%);
     transition: transform 0.5s ease;
 }
-.event-banner.visible { transform: translateY(0); }
-.event-banner.hidden { transform: translateY(-100%); }
-.event-banner p { margin: 0; font-weight: 500; }
-.event-banner a { color: var(--color-primary); font-weight: 700; text-decoration: underline; }
-.close-btn {
+
+.site-banner.visible { transform: translateY(0); }
+.site-banner.hidden { transform: translateY(-100%); }
+.site-banner p { margin: 0; font-weight: 500; }
+.site-banner a { font-weight: 700; text-decoration: underline; }
+
+.site-banner--event {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.site-banner--event a,
+.site-banner--event a:hover {
+    color: var(--color-primary);
+}
+
+.site-banner--book {
+    background-color: var(--color-primary);
+    color: var(--color-base);
+}
+
+.site-banner--book a,
+.site-banner--book a:hover {
+    color: var(--color-accent);
+}
+
+.site-banner__close {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--color-primary);
     position: absolute;
     right: 20px;
     top: 50%;
@@ -30,8 +49,17 @@
     width: 20px;
     height: 20px;
 }
-.close-btn svg { width: 14px; height: 14px; }
+
+.site-banner__close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.site-banner--event .site-banner__close { color: var(--color-primary); }
+.site-banner--book .site-banner__close { color: var(--color-base); }
+.site-banner__close svg { width: 14px; height: 14px; }
+
 @media (max-width: 992px) {
-    .event-banner { padding-right: 50px; }
-    .close-btn { right: 15px; }
+    .site-banner { padding-right: 50px; }
+    .site-banner__close { right: 15px; }
 }

@@ -4,7 +4,8 @@
  * @type {Object}
  */
 export const config = {
-    enableBanner: true,  // Ativa/desativa o banner na homepage
+    enableBanner: false,  // Ativa/desativa o banner de evento na homepage
+    enableBookBanner: true,  // Ativa/desativa o banner do livro na homepage
     enableEventsPlaceholder: true,  // Ativa/desativa o placeholder na seção de eventos
     // Futuros toggles: enableFooterAds: false, etc.
 };
