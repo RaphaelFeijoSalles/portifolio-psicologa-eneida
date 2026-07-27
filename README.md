@@ -64,7 +64,7 @@ export const config = {
 Copie `.env.example` para `.env` (ou acrescente as chaves ao `.env` já existente) e preencha os dados do produto antes de publicar a venda:
 
 ```dotenv
-BOOK_TITLE="Título do livro"
+BOOK_TITLE="Memórias de uma psicóloga em um relacionamento abusivo"
 BOOK_DESCRIPTION="Descrição enviada à operadora de pagamento"
 BOOK_PRICE_CENTS=5990
 ```
@@ -103,7 +103,7 @@ Em seguida, abra `http://localhost:5500` no navegador.
 
 - O banner aparece apenas na homepage e é removido ao clicar no link interno.
 - O formulário do evento utiliza validação de email, máscara de telefone e regras simples de consistência.
-- O formulário do livro envia o endereço estruturado e uma versão consolidada em `endereco_completo`; as opções selecionadas são incluídas em `observacao` no formato `[Presente, Autografado]`.
+- O formulário do livro permite entrega com frete grátis em todo o Brasil ou resgate presencial na estreia; quando há entrega, envia o endereço estruturado e uma versão consolidada em `endereco_completo`. As opções selecionadas são incluídas em `observacao` no formato `[Presente, Autografado]`.
 - O design foi refatorado para remover todo CSS inline e consolidar estilos em arquivos CSS específicos.
 
 ## 👤 Desenvolvedor

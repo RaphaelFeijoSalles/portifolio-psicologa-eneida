@@ -60,7 +60,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const receiptUrl = urlParams.get('receipt_url');
 
-            // Se a InfinitePay enviou um link de comprovante, criamos o botão dinamicamente
+            // Se a operadora enviou um link de comprovante, criamos o botão dinamicamente
             if (receiptUrl) {
                 const actionContainer = document.getElementById('action-buttons');
 

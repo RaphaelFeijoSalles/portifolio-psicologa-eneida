@@ -6,7 +6,7 @@ import { escapeHtml } from '../../utils/html.js';
 export class SalesHero {
     /**
      * @param {string|HTMLElement} target
-     * @param {{eyebrow?: string, title: string|string[], subtitle?: string, meta?: string, description?: string, cta?: {label: string, href: string}}} content
+     * @param {{eyebrow?: string, title: string|string[], subtitle?: string, meta?: string, description?: string, cta?: {label: string, href: string}, image?: {src: string, alt: string}}} content
      */
     constructor(target, content) {
         this.target = typeof target === 'string' ? document.querySelector(target) : target;
@@ -37,16 +37,31 @@ export class SalesHero {
         const cta = this.content.cta
             ? `<a class="btn-primary sales-hero__cta" href="${escapeHtml(this.content.cta.href)}">${escapeHtml(this.content.cta.label)}</a>`
             : '';
+        const copy = `
+            <div class="sales-hero__copy">
+                ${eyebrow}
+                <h1>${titleLines.map(escapeHtml).join('<br>')}</h1>
+                ${subtitle}
+                ${meta}
+                ${description}
+                ${cta}
+            </div>
+        `;
+        const image = this.content.image
+            ? `
+                <figure class="sales-hero__media">
+                    <img src="${escapeHtml(this.content.image.src)}" alt="${escapeHtml(this.content.image.alt)}">
+                </figure>
+            `
+            : '';
+        const content = this.content.image
+            ? `<div class="sales-hero__layout">${copy}${image}</div>`
+            : copy;
 
         this.target.innerHTML = `
-            <section class="event-hero sales-hero">
+            <section class="event-hero sales-hero${this.content.image ? ' sales-hero--with-image' : ''}">
                 <div class="container">
-                    ${eyebrow}
-                    <h1>${titleLines.map(escapeHtml).join('<br>')}</h1>
-                    ${subtitle}
-                    ${meta}
-                    ${description}
-                    ${cta}
+                    ${content}
                 </div>
             </section>
         `;

@@ -10,11 +10,11 @@ try {
     exit;
 }
 
-// Recebe a notificação da InfinitePay
+// Recebe a notificação da operadora de pagamento.
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-// Se a InfinitePay mandar o status de pago (Eles enviam "amount" e "paid_amount" no webhook)
+// Se a operadora mandar o status de pago (com "amount" e "paid_amount" no webhook)
 if (isset($data['order_nsu']) && isset($data['paid_amount'])) {
     
     // Prepara o recado para o Google Sheets
@@ -39,7 +39,7 @@ if (isset($data['order_nsu']) && isset($data['paid_amount'])) {
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     curl_exec($ch);
 
-    // Responde 200 OK para a InfinitePay parar de insistir
+    // Responde 200 OK para confirmar o recebimento da notificação.
     http_response_code(200);
     echo "OK";
 } else {

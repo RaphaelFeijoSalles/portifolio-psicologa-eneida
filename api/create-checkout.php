@@ -38,7 +38,7 @@ try {
 
     sendOrderToGoogleSheets($customerData);
 
-    $checkoutUrl = createInfinitePayCheckout($customerData, $product);
+    $checkoutUrl = createPaymentCheckout($customerData, $product);
     respondWithJson(['checkoutUrl' => $checkoutUrl]);
 } catch (InvalidArgumentException $error) {
     respondWithJson(['error' => $error->getMessage()], 422);
@@ -80,9 +80,13 @@ function validateCheckoutData(array $customerData, array $product): void
         }
     }
 
-    foreach ($product['shippingFields'] ?? [] as $field) {
-        if (($customerData[$field] ?? '') === '') {
-            throw new InvalidArgumentException('Informe o endereço completo para a entrega.');
+    validateDeliveryMethod($customerData, $product);
+
+    if (shouldIncludeShippingAddress($customerData, $product)) {
+        foreach ($product['shippingFields'] ?? [] as $field) {
+            if (($customerData[$field] ?? '') === '') {
+                throw new InvalidArgumentException('Informe o endereço completo para a entrega.');
+            }
         }
     }
 
@@ -95,6 +99,41 @@ function validateCheckoutData(array $customerData, array $product): void
     if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         throw new InvalidArgumentException('Informe um e-mail válido.');
     }
+}
+
+/**
+ * @param array<string, string> $customerData
+ * @param array<string, mixed> $product
+ */
+function validateDeliveryMethod(array $customerData, array $product): void
+{
+    $methodField = $product['deliveryMethodField'] ?? null;
+    if (!is_string($methodField)) {
+        return;
+    }
+
+    $allowedMethods = $product['allowedDeliveryMethods'] ?? [];
+    if (!in_array($customerData[$methodField] ?? '', $allowedMethods, true)) {
+        throw new InvalidArgumentException('Escolha como deseja receber o livro.');
+    }
+}
+
+/**
+ * @param array<string, string> $customerData
+ * @param array<string, mixed> $product
+ */
+function shouldIncludeShippingAddress(array $customerData, array $product): bool
+{
+    if (!($product['requiresShipping'] ?? false)) {
+        return false;
+    }
+
+    $methodField = $product['deliveryMethodField'] ?? null;
+    if (!is_string($methodField)) {
+        return true;
+    }
+
+    return ($customerData[$methodField] ?? '') === ($product['deliveryMethodShippingValue'] ?? 'entrega');
 }
 
 /**
@@ -135,7 +174,7 @@ function sendOrderToGoogleSheets(array $customerData): void
  * @param array<string, string> $customerData
  * @param array<string, mixed> $product
  */
-function createInfinitePayCheckout(array $customerData, array $product): string
+function createPaymentCheckout(array $customerData, array $product): string
 {
     $phoneDigits = preg_replace('/\D/', '', $customerData['whatsapp']);
     $customer = [
@@ -161,7 +200,7 @@ function createInfinitePayCheckout(array $customerData, array $product): string
         'customer' => $customer,
     ];
 
-    if ($product['requiresShipping']) {
+    if (shouldIncludeShippingAddress($customerData, $product)) {
         $payload['address'] = [
             'cep' => preg_replace('/\D/', '', $customerData['cep']),
             'street' => $customerData['logradouro'],
@@ -187,7 +226,7 @@ function createInfinitePayCheckout(array $customerData, array $product): string
     curl_close($request);
 
     if ($response === false || $httpCode >= 400) {
-        error_log('InfinitePay falhou: ' . ($curlError ?: 'HTTP ' . $httpCode));
+        error_log('Operadora de pagamento falhou: ' . ($curlError ?: 'HTTP ' . $httpCode));
         throw new RuntimeException('Falha ao gerar o link de pagamento.');
     }
 

@@ -21,7 +21,7 @@ function initEventSalesPage() {
             },
             {
                 title: 'Pagamento seguro',
-                description: 'Ao gerar o pagamento, você será direcionada ao ambiente criptografado da InfinitePay para pagar por PIX ou cartão.',
+                description: 'Ao gerar o pagamento, você será direcionada ao ambiente criptografado do PagBank para pagar por PIX, crédito ou débito.',
             },
             {
                 title: 'Confirmação da vaga',
@@ -35,7 +35,7 @@ function initEventSalesPage() {
         items: [
             {
                 question: 'Quais são as formas de pagamento?',
-                answer: 'Você poderá escolher PIX ou cartão de crédito no ambiente seguro da InfinitePay.',
+                answer: 'Você poderá escolher PIX, cartão de crédito ou cartão de débito no ambiente seguro do PagBank.',
             },
             {
                 question: 'Quando minha vaga é confirmada?',
@@ -151,8 +151,9 @@ function initEventSalesPage() {
             methods: [
                 'PIX: pagamento à vista sem taxas adicionais.',
                 'Cartão de crédito: parcelamento em até 12x, com taxas da operadora.',
+                'Cartão de débito: pagamento à vista disponível no checkout do PagBank.',
             ],
-            disclaimer: 'Você será redirecionada para o ambiente criptografado da InfinitePay.',
+            disclaimer: 'Você será redirecionada para o ambiente criptografado do PagBank.',
         },
     }).render();
 }

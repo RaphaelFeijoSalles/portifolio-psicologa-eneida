@@ -78,7 +78,7 @@
     margin-top: auto;
 }
 
-/* --- 3. Checkout: Bandeiras do Cartão (InfinitePay) --- */
+/* --- 3. Checkout: Bandeiras do Cartão (PagBank) --- */
 .payment-brands-box {
     background: var(--color-background-alt);
     border: 1px solid #e0e0e0;

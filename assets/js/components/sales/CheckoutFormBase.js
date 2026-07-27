@@ -5,7 +5,7 @@ import { escapeHtml } from '../../utils/html.js';
  *   id: string,
  *   name: string,
  *   label: string,
- *   type?: 'text'|'email'|'tel'|'date'|'textarea'|'radio'|'toggle',
+ *   type?: 'text'|'email'|'tel'|'date'|'textarea'|'radio'|'segmented'|'toggle',
  *   required?: boolean,
  *   placeholder?: string,
  *   autocomplete?: string,
@@ -19,7 +19,7 @@ import { escapeHtml } from '../../utils/html.js';
  *   statusKey?: string,
  *   helpLink?: {label: string, href: string},
  *   behavior?: 'phone'|'email'|'cep',
- *   options?: Array<{label: string, value: string}>,
+ *   options?: Array<{label: string, value: string, description?: string, checked?: boolean}>,
  *   orderOption?: string
  * }} CheckoutField
  */
@@ -63,7 +63,7 @@ export class CheckoutFormBase {
      *   title: string,
      *   subtitle?: string,
      *   productId: string,
-     *   sections: Array<{title?: string, rows: CheckoutField[][]}>,
+     *   sections: Array<{id?: string, className?: string, title?: string, rows: CheckoutField[][]}>,
      *   payment: {priceLabel: string, methods?: string[], submitLabel?: string, disclaimer?: string},
      *   endpoint?: string,
      *   validation?: {emailFields?: string[], phoneFields?: string[], distinctPhonePairs?: Array<[string, string]>},
@@ -138,9 +138,11 @@ export class CheckoutFormBase {
             const title = section.title
                 ? `<h3 class="form-section-title" id="${escapeHtml(this.config.formId)}-section-${sectionIndex}">${escapeHtml(section.title)}</h3>`
                 : '';
+            const sectionId = section.id ? ` id="${escapeHtml(section.id)}"` : '';
+            const className = `checkout-form-section${section.className ? ` ${escapeHtml(section.className)}` : ''}`;
 
             return `
-                <section class="checkout-form-section"${section.title ? ` aria-labelledby="${escapeHtml(this.config.formId)}-section-${sectionIndex}"` : ''}>
+                <section${sectionId} class="${className}"${section.title ? ` aria-labelledby="${escapeHtml(this.config.formId)}-section-${sectionIndex}"` : ''}>
                     ${title}
                     ${section.rows.map((row) => this.renderRow(row)).join('')}
                 </section>
@@ -188,6 +190,27 @@ export class CheckoutFormBase {
                             <label class="radio-option" for="${fieldId}-${index}">
                                 <input id="${fieldId}-${index}" type="radio" name="${fieldName}" value="${escapeHtml(option.value)}" class="custom-radio"${field.required && index === 0 ? ' required' : ''}>
                                 <span class="radio-label">${escapeHtml(option.label)}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    ${help}
+                </fieldset>
+            `;
+        }
+
+        if (type === 'segmented') {
+            const options = field.options || [];
+            return `
+                <fieldset class="form-group sales-segmented-fieldset">
+                    <legend>${label}${field.required ? ' *' : ''}</legend>
+                    <div class="sales-segmented-control">
+                        ${options.map((option, index) => `
+                            <label class="sales-segmented-control__option" for="${fieldId}-${index}">
+                                <input id="${fieldId}-${index}" type="radio" name="${fieldName}" value="${escapeHtml(option.value)}" class="sales-segmented-control__input"${field.required && index === 0 ? ' required' : ''}${option.checked ? ' checked' : ''}>
+                                <span class="sales-segmented-control__content">
+                                    <strong>${escapeHtml(option.label)}</strong>
+                                    ${option.description ? `<small>${escapeHtml(option.description)}</small>` : ''}
+                                </span>
                             </label>
                         `).join('')}
                     </div>

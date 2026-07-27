@@ -27,12 +27,15 @@ function getSalesProducts(): array
         'livro' => [
             'id' => 'livro',
             'orderPrefix' => 'livro',
-            'title' => getEnvironmentString('BOOK_TITLE', 'Livro físico de Eneida Feijó'),
-            'description' => getEnvironmentString('BOOK_DESCRIPTION', 'Livro físico de Eneida Feijó'),
+            'title' => getEnvironmentString('BOOK_TITLE', 'Memórias de uma psicóloga em um relacionamento abusivo'),
+            'description' => getEnvironmentString('BOOK_DESCRIPTION', 'Memórias de uma psicóloga em um relacionamento abusivo, de Eneida Feijó.'),
             'priceCents' => $bookPriceCents,
-            'requiredFields' => ['nome', 'whatsapp', 'endereco_completo', 'observacao'],
-            'shippingFields' => ['cep', 'logradouro', 'numero', 'bairro', 'cidade', 'uf'],
+            'requiredFields' => ['nome', 'whatsapp', 'metodo_recebimento', 'observacao'],
+            'shippingFields' => ['cep', 'logradouro', 'numero', 'bairro', 'cidade', 'uf', 'endereco_completo'],
             'requiresShipping' => true,
+            'deliveryMethodField' => 'metodo_recebimento',
+            'deliveryMethodShippingValue' => 'entrega',
+            'allowedDeliveryMethods' => ['entrega', 'retirada_presencial'],
         ],
     ];
 }

@@ -1,15 +1,17 @@
 import { SalesHero } from '../../components/sales/SalesHero.js';
 import { SalesBenefits } from '../../components/sales/SalesBenefits.js';
 import { SalesFAQ } from '../../components/sales/SalesFAQ.js';
+import { SalesHighlight } from '../../components/sales/SalesHighlight.js';
 import { CheckoutFormBase } from '../../components/sales/CheckoutFormBase.js';
 import { CepAddressLookup } from '../../modules/CepAddressLookup.js';
+import { DeliveryMethodController } from '../../modules/DeliveryMethodController.js';
 import { prepareBookOrderPayload } from '../../modules/BookOrderPayload.js';
 
 const BOOK_PRODUCT_ENDPOINT = '/api/products.php?product=livro';
 
 const unavailableBook = {
-    title: 'Livro físico de Eneida Feijó',
-    description: 'Adquira seu exemplar físico e receba no endereço informado.',
+    title: 'Memórias de uma psicóloga em um relacionamento abusivo',
+    description: 'O livro de Eneida Feijó para ler, refletir e acolher a própria história.',
     available: false,
     priceLabel: null,
 };
@@ -40,24 +42,46 @@ function renderBookSalesPage(product) {
         subtitle: 'Um convite à leitura, reflexão e cuidado.',
         description: product.description,
         cta: { label: 'Quero meu exemplar', href: '#book-checkout-section' },
+        image: {
+            src: '../../assets/images/livro/livro.png',
+            alt: `Capa do livro ${product.title}`,
+        },
+    }).render();
+
+    new SalesHighlight('#sales-highlight', {
+        eyebrow: 'Evento de estreia do livro',
+        title: 'Um encontro especial com a Eneida',
+        description: 'Na estreia, você poderá garantir o livro e resgatar seu exemplar presencialmente com a autora.',
+        items: [
+            {
+                title: 'Frete grátis para todo o Brasil',
+                description: 'Se preferir receber em casa, a entrega não terá custo adicional.',
+            },
+            {
+                title: 'Resgate presencial na estreia',
+                description: 'Escolha essa opção no pedido para retirar seu exemplar diretamente com a Eneida.',
+            },
+        ],
+        cta: { label: 'Garantir meu exemplar', href: '#book-checkout-section' },
+        seal: 'Estreia',
     }).render();
 
     new SalesBenefits('#sales-benefits', {
         title: 'Seu pedido em poucos passos',
-        subtitle: 'Preencha seus dados de entrega e finalize o pagamento com segurança.',
+        subtitle: 'Escolha como receber o livro e finalize o pagamento com segurança.',
         tone: 'alternate',
         items: [
             {
-                title: 'Informe o endereço',
-                description: 'Use o CEP para agilizar o preenchimento e informe os dados completos para a entrega.',
+                title: 'Frete grátis para todo o Brasil',
+                description: 'Informe o endereço para receber seu exemplar sem custo adicional de envio.',
             },
             {
-                title: 'Personalize seu exemplar',
-                description: 'Você pode indicar se o livro é para presente e se deseja recebê-lo autografado.',
+                title: 'Resgate na estreia',
+                description: 'Você também pode escolher retirar o livro presencialmente com a Eneida durante a estreia.',
             },
             {
                 title: 'Finalize com segurança',
-                description: 'O pagamento é gerado no ambiente protegido da InfinitePay, por PIX ou cartão.',
+                description: 'O pagamento é gerado no ambiente protegido do PagBank, por PIX, crédito ou débito.',
             },
         ],
     }).render();
@@ -66,16 +90,16 @@ function renderBookSalesPage(product) {
         title: 'Dúvidas frequentes',
         items: [
             {
-                question: 'Como encontro meu CEP?',
-                answer: 'No formulário há um link “Esqueci meu CEP” que abre a busca oficial dos Correios em outra aba.',
+                question: 'O frete é gratuito?',
+                answer: 'Sim. A entrega do livro é gratuita para qualquer endereço no Brasil.',
             },
             {
-                question: 'Posso pedir o livro para presente?',
-                answer: 'Sim. Ative a opção “Para presente?” antes de gerar o pagamento para incluir essa informação no pedido.',
+                question: 'Posso retirar o livro presencialmente?',
+                answer: 'Sim. Selecione a opção de resgate presencial no formulário para retirar seu exemplar com a Eneida na estreia do livro.',
             },
             {
-                question: 'Como confirmo meu pedido?',
-                answer: 'Após a aprovação do pagamento, você será direcionada para a página de confirmação.',
+                question: 'Quais são as formas de pagamento?',
+                answer: 'Você poderá pagar por PIX, cartão de crédito ou cartão de débito no checkout do PagBank.',
             },
         ],
     }).render();
@@ -85,7 +109,7 @@ function renderBookSalesPage(product) {
         formId: 'book-checkout',
         productId: 'livro',
         title: 'Peça seu exemplar',
-        subtitle: 'Os campos marcados com asterisco são necessários para preparar e entregar seu pedido.',
+        subtitle: 'Escolha entre entrega com frete grátis ou resgate presencial na estreia do livro.',
         available: product.available,
         unavailableMessage: 'A venda do livro será liberada assim que os dados do produto forem configurados.',
         sections: [
@@ -115,7 +139,34 @@ function renderBookSalesPage(product) {
                 ],
             },
             {
-                title: 'Endereço completo',
+                title: 'Como você quer receber o livro?',
+                rows: [
+                    [{
+                        id: 'metodo_recebimento',
+                        name: 'metodo_recebimento',
+                        label: 'Escolha uma opção',
+                        type: 'segmented',
+                        required: true,
+                        statusKey: 'delivery-method',
+                        options: [
+                            {
+                                label: 'Receber no endereço',
+                                value: 'entrega',
+                                description: 'Frete grátis para todo o Brasil.',
+                                checked: true,
+                            },
+                            {
+                                label: 'Resgatar presencialmente',
+                                value: 'retirada_presencial',
+                                description: 'Retire com a Eneida no evento de estreia.',
+                            },
+                        ],
+                    }],
+                ],
+            },
+            {
+                id: 'book-shipping-address',
+                title: 'Endereço de entrega',
                 rows: [
                     [{
                         id: 'cep',
@@ -224,14 +275,18 @@ function renderBookSalesPage(product) {
                 : 'Valor do livro em configuração',
             methods: [
                 'PIX: pagamento à vista sem taxas adicionais.',
-                'Cartão de crédito: condições disponíveis no checkout da InfinitePay.',
+                'Cartão de crédito: condições disponíveis no checkout do PagBank.',
+                'Cartão de débito: pagamento à vista disponível no checkout do PagBank.',
             ],
-            disclaimer: 'Você será redirecionada para o ambiente criptografado da InfinitePay.',
+            disclaimer: 'Você será redirecionada para o ambiente criptografado do PagBank.',
         },
     }).render();
 
     if (checkout.form) {
         new CepAddressLookup(checkout.form).init();
+        new DeliveryMethodController(checkout.form, {
+            addressSectionId: 'book-shipping-address',
+        }).init();
     }
 }
 
