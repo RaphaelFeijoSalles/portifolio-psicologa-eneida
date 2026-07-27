@@ -5,12 +5,15 @@
 export class DeliveryMethodController {
     /**
      * @param {HTMLFormElement} form
-     * @param {{methodName?: string, deliveryValue?: string, addressSectionId: string}} options
+     * @param {{methodName?: string, deliveryValue?: string, addressSectionId: string, deliveryStatusMessage?: string, pickupStatusMessage?: string}} options
      */
     constructor(form, options) {
         this.form = form;
         this.methodName = options.methodName || 'metodo_recebimento';
         this.deliveryValue = options.deliveryValue || 'entrega';
+        this.deliveryStatusMessage = options.deliveryStatusMessage || 'Frete grátis para todo o Brasil.';
+        this.pickupStatusMessage = options.pickupStatusMessage
+            || 'Você poderá resgatar seu exemplar presencialmente com a Eneida no evento de estreia.';
         this.addressSection = this.form.querySelector(`#${options.addressSectionId}`);
         this.methodInputs = Array.from(this.form.querySelectorAll(`input[name="${this.methodName}"]`));
         this.addressInputs = this.addressSection
@@ -72,8 +75,8 @@ export class DeliveryMethodController {
         }
 
         this.statusElement.textContent = shouldDeliver
-            ? 'Frete grátis para todo o Brasil.'
-            : 'Você poderá resgatar seu exemplar presencialmente com a Eneida no evento de estreia.';
+            ? this.deliveryStatusMessage
+            : this.pickupStatusMessage;
         this.statusElement.dataset.state = 'success';
     }
 }

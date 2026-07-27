@@ -7,7 +7,7 @@ import { escapeHtml } from '../../utils/html.js';
 export class SalesHighlight {
     /**
      * @param {string|HTMLElement} target
-     * @param {{eyebrow?: string, title: string, description: string, items?: Array<{title: string, description: string}>, cta?: {label: string, href: string}, seal?: string}} content
+     * @param {{eyebrow?: string, title: string, description: string, eventDetails?: Array<{label: string, value: string}>, items?: Array<{title: string, description: string}>, cta?: {label: string, href: string}, seal?: string}} content
      */
     constructor(target, content) {
         this.target = typeof target === 'string' ? document.querySelector(target) : target;
@@ -28,6 +28,12 @@ export class SalesHighlight {
                 <span>${escapeHtml(item.description)}</span>
             </li>
         `).join('');
+        const eventDetails = (this.content.eventDetails || []).map((detail) => `
+            <div>
+                <dt>${escapeHtml(detail.label)}</dt>
+                <dd>${escapeHtml(detail.value)}</dd>
+            </div>
+        `).join('');
         const cta = this.content.cta
             ? `<a class="btn-primary sales-highlight__cta" href="${escapeHtml(this.content.cta.href)}">${escapeHtml(this.content.cta.label)}</a>`
             : '';
@@ -43,6 +49,7 @@ export class SalesHighlight {
                             ${eyebrow}
                             <h2>${escapeHtml(this.content.title)}</h2>
                             <p>${escapeHtml(this.content.description)}</p>
+                            ${eventDetails ? `<dl class="sales-highlight__event-details">${eventDetails}</dl>` : ''}
                             ${items ? `<ul class="sales-highlight__list">${items}</ul>` : ''}
                             ${cta}
                         </div>

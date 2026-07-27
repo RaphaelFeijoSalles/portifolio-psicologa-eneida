@@ -30,7 +30,7 @@ function getSalesProducts(): array
             'title' => getEnvironmentString('BOOK_TITLE', 'Memórias de uma psicóloga em um relacionamento abusivo'),
             'description' => getEnvironmentString('BOOK_DESCRIPTION', 'Memórias de uma psicóloga em um relacionamento abusivo, de Eneida Feijó.'),
             'priceCents' => $bookPriceCents,
-            'requiredFields' => ['nome', 'whatsapp', 'metodo_recebimento', 'observacao'],
+            'requiredFields' => ['nome', 'whatsapp', 'metodo_recebimento'],
             'shippingFields' => ['cep', 'logradouro', 'numero', 'bairro', 'cidade', 'uf', 'endereco_completo'],
             'requiresShipping' => true,
             'deliveryMethodField' => 'metodo_recebimento',

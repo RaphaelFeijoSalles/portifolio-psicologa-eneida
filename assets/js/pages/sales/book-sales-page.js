@@ -8,6 +8,12 @@ import { DeliveryMethodController } from '../../modules/DeliveryMethodController
 import { prepareBookOrderPayload } from '../../modules/BookOrderPayload.js';
 
 const BOOK_PRODUCT_ENDPOINT = '/api/products.php?product=livro';
+const BOOK_LAUNCH = {
+    dateAndTime: '29/07 (quarta-feira), às 19h',
+    venue: 'Biblioteca Municipal de Londrina',
+    address: 'Av. Rio de Janeiro, 413 - Centro Londrina - PR',
+};
+const BOOK_LAUNCH_LOCATION = `${BOOK_LAUNCH.venue} (${BOOK_LAUNCH.address})`;
 
 const unavailableBook = {
     title: 'Memórias de uma psicóloga em um relacionamento abusivo',
@@ -51,7 +57,17 @@ function renderBookSalesPage(product) {
     new SalesHighlight('#sales-highlight', {
         eyebrow: 'Evento de estreia do livro',
         title: 'Um encontro especial com a Eneida',
-        description: 'Na estreia, você poderá garantir o livro e resgatar seu exemplar presencialmente com a autora.',
+        description: 'Celebre a estreia do livro e, se preferir, resgate seu exemplar presencialmente com a autora.',
+        eventDetails: [
+            {
+                label: 'Data e horário',
+                value: BOOK_LAUNCH.dateAndTime,
+            },
+            {
+                label: 'Local',
+                value: BOOK_LAUNCH_LOCATION,
+            },
+        ],
         items: [
             {
                 title: 'Frete grátis para todo o Brasil',
@@ -59,7 +75,7 @@ function renderBookSalesPage(product) {
             },
             {
                 title: 'Resgate presencial na estreia',
-                description: 'Escolha essa opção no pedido para retirar seu exemplar diretamente com a Eneida.',
+                description: 'Escolha essa opção no pedido para retirar seu exemplar diretamente com a Eneida no evento.',
             },
         ],
         cta: { label: 'Garantir meu exemplar', href: '#book-checkout-section' },
@@ -72,15 +88,15 @@ function renderBookSalesPage(product) {
         tone: 'alternate',
         items: [
             {
-                title: 'Frete grátis para todo o Brasil',
-                description: 'Informe o endereço para receber seu exemplar sem custo adicional de envio.',
+                title: 'Escolha como receber',
+                description: 'Receba em casa com frete grátis para todo o Brasil ou retire presencialmente na estreia.',
             },
             {
-                title: 'Resgate na estreia',
-                description: 'Você também pode escolher retirar o livro presencialmente com a Eneida durante a estreia.',
+                title: 'Complete seu pedido',
+                description: 'Informe seus dados e, para entrega, o endereço. Você também pode indicar presente ou autógrafo.',
             },
             {
-                title: 'Finalize com segurança',
+                title: 'Finalize o pagamento',
                 description: 'O pagamento é gerado no ambiente protegido do PagBank, por PIX, crédito ou débito.',
             },
         ],
@@ -95,7 +111,7 @@ function renderBookSalesPage(product) {
             },
             {
                 question: 'Posso retirar o livro presencialmente?',
-                answer: 'Sim. Selecione a opção de resgate presencial no formulário para retirar seu exemplar com a Eneida na estreia do livro.',
+                answer: `Sim. Selecione o resgate presencial no formulário e retire seu exemplar com a Eneida em ${BOOK_LAUNCH.dateAndTime}, na ${BOOK_LAUNCH_LOCATION}.`,
             },
             {
                 question: 'Quais são as formas de pagamento?',
@@ -158,7 +174,7 @@ function renderBookSalesPage(product) {
                             {
                                 label: 'Resgatar presencialmente',
                                 value: 'retirada_presencial',
-                                description: 'Retire com a Eneida no evento de estreia.',
+                                description: `${BOOK_LAUNCH.dateAndTime}, na ${BOOK_LAUNCH.venue}.`,
                             },
                         ],
                     }],
@@ -230,14 +246,13 @@ function renderBookSalesPage(product) {
                 ],
             },
             {
-                title: 'Observação do pedido',
+                title: 'Observações do pedido',
                 rows: [
                     [{
                         id: 'observacao',
                         name: 'observacao',
-                        label: 'Observação',
+                        label: 'Observação (opcional)',
                         type: 'textarea',
-                        required: true,
                         rows: 3,
                         placeholder: 'Escreva uma observação para seu pedido.',
                     }],
@@ -286,6 +301,7 @@ function renderBookSalesPage(product) {
         new CepAddressLookup(checkout.form).init();
         new DeliveryMethodController(checkout.form, {
             addressSectionId: 'book-shipping-address',
+            pickupStatusMessage: `Resgate seu exemplar com a Eneida em ${BOOK_LAUNCH.dateAndTime}, na ${BOOK_LAUNCH.venue}.`,
         }).init();
     }
 }
