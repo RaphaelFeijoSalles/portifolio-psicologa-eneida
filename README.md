@@ -6,6 +6,7 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 
 - Página inicial com informações institucionais, eventos realizados e chamada para a próxima imersão.
 - Página de evento com formulário de inscrição nativo, validação em tempo real e integração com backend de pagamentos.
+- Página de venda de livro físico, com endereço de entrega, consulta automática de CEP e opções de presente/autógrafo.
 - Página de sucesso de inscrição com confirmação visual e botão de comprovante quando disponível.
 - Banner de evento na homepage que desaparece suavemente ao clicar em "Reserve esse tempo para você" e permanece oculto durante a sessão.
 
@@ -13,7 +14,7 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 
 - **HTML componentizado:** `header.html`, `footer.html` e `banner.html` são carregados dinamicamente via Fetch API para reduzir duplicação.
 - **CSS modular:** `assets/css/main.css` importa arquivos de layout, componentes, páginas e utilitários.
-- **JavaScript modular:** Código dividido em módulos ES6 (`assets/js/modules` e `assets/js/utils`).
+- **JavaScript modular:** Componentes de venda reutilizáveis (`SalesHero`, `SalesBenefits`, `SalesFAQ` e `CheckoutFormBase`) e regras isoladas por responsabilidade.
 - **Sessão de estado leve:** `sessionStorage` é usado para gerenciar o estado do banner na homepage.
 
 ## 🚀 Recursos Principais
@@ -21,6 +22,7 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
 - Navegação responsiva com menu mobile
 - Layout moderno usando CSS Grid e Flexbox
 - Formulário de evento com máscara de telefone e validação em tempo real
+- Formulário de livro com busca no ViaCEP, link para busca de CEP dos Correios e observações de presente/autógrafo
 - Checkout nativo via backend PHP (`/api/create-checkout.php`)
 - Página de confirmação com botão dinâmico de comprovante
 - Banner exclusivo da homepage que não reaparece após clique enquanto a aba estiver aberta
@@ -34,11 +36,13 @@ Projeto de portfólio profissional e plataforma de inscrição para eventos da p
   - `components/` — botões, cards, formulários
   - `pages/` — estilos específicos de homepage, eventos e sucesso
 - `/assets/js/`
-  - `modules/` — `HeaderMenu`, `BannerController`, `EventPageController`, `FooterController`
+  - `components/sales/` — componentes reutilizáveis das páginas de venda
+  - `modules/` — controladores globais, consulta de CEP e preparação do pedido do livro
+  - `pages/sales/` — composição da página de imersão e da página de livro
   - `utils/` — carregamento de componentes, clipboard, helpers
 - `/components/` — `header.html`, `footer.html`, `banner.html`
-- `/pages/` — `tardedeimersao3/index.html`, `sucesso/index.html`, entre outras páginas de eventos
-- `/api/` — backend PHP para criação de checkout e webhook
+- `/pages/` — `tardedeimersao3/index.html`, `livro/index.html`, `sucesso/index.html`, entre outras páginas de eventos
+- `/api/` — backend PHP para catálogo de produtos, criação de checkout e webhook
 
 ## Configuração de Toggles
 
@@ -54,6 +58,18 @@ export const config = {
     enableEventsPlaceholder: true,
 };
 ```
+
+## Configuração do livro
+
+Copie `.env.example` para `.env` (ou acrescente as chaves ao `.env` já existente) e preencha os dados do produto antes de publicar a venda:
+
+```dotenv
+BOOK_TITLE="Título do livro"
+BOOK_DESCRIPTION="Descrição enviada à operadora de pagamento"
+BOOK_PRICE_CENTS=5990
+```
+
+O valor é informado em centavos. Enquanto `BOOK_PRICE_CENTS` não tiver um valor positivo, a página continua visível, mas o botão de pagamento fica desabilitado para evitar uma cobrança com preço incorreto.
 
 ## 💻 Como Executar Localmente
 
@@ -87,6 +103,7 @@ Em seguida, abra `http://localhost:5500` no navegador.
 
 - O banner aparece apenas na homepage e é removido ao clicar no link interno.
 - O formulário do evento utiliza validação de email, máscara de telefone e regras simples de consistência.
+- O formulário do livro envia o endereço estruturado e uma versão consolidada em `endereco_completo`; as opções selecionadas são incluídas em `observacao` no formato `[Presente, Autografado]`.
 - O design foi refatorado para remover todo CSS inline e consolidar estilos em arquivos CSS específicos.
 
 ## 👤 Desenvolvedor

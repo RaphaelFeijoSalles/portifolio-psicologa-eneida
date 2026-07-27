@@ -1,0 +1,294 @@
+/* ==========================================================================
+   COMPONENTES DE VENDAS — hero, benefícios, FAQ e checkout reutilizável
+   ========================================================================== */
+
+.sales-hero {
+    margin-bottom: 0;
+}
+
+.sales-hero__eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.sales-hero__subtitle {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.sales-hero__meta {
+    margin: 0;
+    color: var(--color-base);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.sales-hero__description {
+    max-width: 740px;
+    margin: 1.25rem auto 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sales-hero__cta {
+    display: inline-flex;
+    margin-top: 1.75rem;
+}
+
+.sales-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+}
+
+.sales-benefits__item {
+    background: var(--color-base);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sales-benefits__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.sales-benefits__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-base);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sales-benefits__item h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.sales-benefits__item p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.sales-faq__container {
+    max-width: 860px;
+}
+
+.sales-faq__list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.sales-faq__item {
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background: var(--color-base);
+}
+
+.sales-faq__item summary {
+    position: relative;
+    padding: 1.15rem 3rem 1.15rem 1.25rem;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-weight: 700;
+    list-style: none;
+}
+
+.sales-faq__item summary::-webkit-details-marker {
+    display: none;
+}
+
+.sales-faq__item summary::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.sales-faq__item[open] summary::after {
+    content: '−';
+}
+
+.sales-faq__item p {
+    margin: 0;
+    padding: 0 1.25rem 1.25rem;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+.checkout-form-section + .checkout-form-section {
+    margin-top: 2.5rem;
+}
+
+.checkout-form-error,
+.checkout-unavailable {
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1rem;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+.checkout-form-error {
+    border-left: 4px solid #c0392b;
+    background: #fdf0ee;
+    color: #8e2e23;
+}
+
+.checkout-unavailable {
+    border-left: 4px solid var(--color-secondary);
+    background: var(--color-background-alt);
+    color: var(--color-text-dark);
+}
+
+.checkout-disclaimer {
+    margin: 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.checkout-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.form-group input.is-valid {
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+}
+
+.form-group input.is-invalid {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.field-hint {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.field-hint [data-state='loading'] {
+    color: var(--color-secondary);
+}
+
+.field-hint [data-state='success'] {
+    color: #207245;
+}
+
+.field-hint [data-state='error'] {
+    color: #b63a2f;
+}
+
+.cep-help-link {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.sales-toggle-group {
+    margin-bottom: 0;
+}
+
+.sales-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sales-toggle__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.sales-toggle__control {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: #b9b9b9;
+    transition: background-color 0.2s ease;
+}
+
+.sales-toggle__control::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-base);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.sales-toggle__input:checked + .sales-toggle__control {
+    background: var(--color-primary);
+}
+
+.sales-toggle__input:checked + .sales-toggle__control::after {
+    transform: translateX(20px);
+}
+
+.sales-toggle__input:focus-visible + .sales-toggle__control {
+    outline: 3px solid rgba(84, 122, 139, 0.45);
+    outline-offset: 3px;
+}
+
+.sales-toggle__label {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.checkout-loading.is-visible {
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .sales-benefits__grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sales-hero__subtitle {
+        font-size: 1.1rem;
+    }
+}

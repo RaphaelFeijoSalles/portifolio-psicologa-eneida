@@ -2,7 +2,6 @@ import { loadComponent } from './utils/componentLoader.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
 import { BannerController } from './modules/BannerController.js';
 import { FooterController } from './modules/FooterController.js';
-import { EventPageController } from './modules/EventPageController.js';
 import { EventListController } from './modules/EventListController.js';
 import { ToggleController } from './modules/ToggleController.js';  // Novo import
 
@@ -44,9 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const footer = new FooterController();
     footer.init();
-
-    const eventController = new EventPageController();
-    eventController.init();
 
     // Passa toggleController para EventListController
     EventListController.init(toggleController);
